@@ -29,12 +29,21 @@ body {
     width: 1080px;
 }
 
+#logo {
+    font-size: 125%;
+}
+
+nav {
+    margin-left: 16px;
+}
+
 nav > ul {
     padding: 0;
 }
 
 nav > ul > li {
     display: inline-block;
+    margin-left: 32px;
 }
 
 main {

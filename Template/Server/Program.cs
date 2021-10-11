@@ -1,6 +1,8 @@
-using Microsoft.AspNetCore.ResponseCompression;
+using Blankendaal.Template.Server.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Host.AddConfiguration("appsettings.json");
 
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
@@ -27,3 +29,4 @@ app.MapControllers();
 app.MapFallbackToFile("index.html");
 
 app.Run();
+
