@@ -9,7 +9,7 @@
 	<ItemGroup>
 		<SupportedPlatform Include="browser" />
 	</ItemGroup>
-	
+
 	<ItemGroup>
 		<Compile Update="Resources\Resources.en-US.Designer.cs">
 			<AutoGen>True</AutoGen>
@@ -27,13 +27,15 @@
 	<ItemGroup>
 		<EmbeddedResource Update="Resources\Resources.en-US.resx">
 			<Generator>PublicResXFileCodeGenerator</Generator>
-			<LastGenOutput>Resources.en-US.Designer.cs</LastGenOutput>
 		</EmbeddedResource>
 
 		<EmbeddedResource Update="Resources\Resources.nl-NL.resx">
 			<Generator>PublicResXFileCodeGenerator</Generator>
-			<LastGenOutput>Resources.nl-NL.Designer.cs</LastGenOutput>
 		</EmbeddedResource>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.0-rc.1.21452.15" />
 	</ItemGroup>
 
 </Project>

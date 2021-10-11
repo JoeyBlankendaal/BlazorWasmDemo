@@ -1,0 +1,54 @@
+﻿@page "/account/create"
+
+<div class="small-container">
+    <div class="box">
+        <h1>@Localizer["CreateYourAccount"]</h1>
+
+        <EditForm OnValidSubmit="OnValidSubmit" Model="Parameters">
+            <DataAnnotationsValidator />
+    
+            <div class="input">
+                <label for="user-name">@Localizer["UserName"]</label>
+                <InputText id="user-name" autofocus @bind-Value="Parameters.UserName" />
+                
+                <p class="margin-0 red-text">
+                    <ValidationMessage class="red-text" For="@(() => Parameters.UserName)" />
+                </p>
+            </div>
+            
+            <div class="input">
+                <label for="email">@Localizer["Email"]</label>
+                <InputText id="email" @bind-Value="Parameters.Email" />
+
+                <p class="margin-0 red-text">
+                    <ValidationMessage class="red-text" For="@(() => Parameters.Email)" />
+                </p>
+            </div>
+            
+            <div class="input">
+                <label for="password">@Localizer["Password"]</label>
+                <InputText id="password" type="password" @bind-Value="Parameters.Password" />
+
+                <p class="margin-0 red-text">
+                    <ValidationMessage class="red-text" For="@(() => Parameters.Password)" />
+                </p>
+            </div>
+            
+            <div class="input">
+                <label for="password-confirmation">@Localizer["ConfirmPassword"]</label>
+                <InputText id="password-confirmation" type="password" @bind-Value="Parameters.PasswordConfirmation" />
+
+                <p class="margin-0 red-text">
+                    <ValidationMessage class="red-text" For="@(() => Parameters.PasswordConfirmation)" />
+                </p>
+        
+                @if (Result != null)
+                {
+                    <p class="@(Result.HasSucceeded ? "green-text" : "red-text") margin-0">@Result.Message</p>
+                }
+            </div>
+
+            <button>@Localizer["Next"]</button>
+        </EditForm>
+    </div>
+</div>

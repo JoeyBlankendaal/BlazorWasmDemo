@@ -1,7 +1,25 @@
 ﻿<nav>
     <ul>
-        <li class="nav-li">
+        <li>
             <NavLink href="" Match="NavLinkMatch.All">@Localizer["Home"]</NavLink>
         </li>
+
+        <AuthorizeView>
+            <Authorized>
+                <li>
+                    <button @onclick="@OnClickLogOut">@Localizer["LogOut"]</button>
+                </li>
+            </Authorized>
+
+            <NotAuthorized>
+                <li>
+                    <NavLink href="account/create">@Localizer["SignUp"]</NavLink>
+                </li>
+                
+                <li>
+                    <NavLink href="account/log-in">@Localizer["LogIn"]</NavLink>
+                </li>
+            </NotAuthorized>
+        </AuthorizeView>
     </ul>
 </nav>

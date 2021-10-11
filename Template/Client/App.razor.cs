@@ -10,7 +10,7 @@ public partial class App
     public IJSRuntime JS { get; set; }
 
     [Inject]
-    public NavigationManager Nav { get; set; }
+    public NavigationManager NavManager { get; set; }
 
     public CultureInfo[] Cultures { get; set; }
 
@@ -22,7 +22,7 @@ public partial class App
             if (CultureInfo.CurrentCulture != value)
             {
                 ((IJSInProcessRuntime)JS).InvokeVoid("blazorCulture.set", value.Name);
-                Nav.NavigateTo(Nav.Uri, forceLoad: true);
+                NavManager.NavigateTo(NavManager.Uri, forceLoad: true);
             }
         }
     }

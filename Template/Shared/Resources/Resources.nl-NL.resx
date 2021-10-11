@@ -117,16 +117,61 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ConfirmPassword" xml:space="preserve">
+    <value>Wachtwoord bevestigen</value>
+  </data>
+  <data name="CreateYourAccount" xml:space="preserve">
+    <value>Account aanmaken</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>E-mailadres</value>
+  </data>
   <data name="en-US" xml:space="preserve">
     <value>English (United States)</value>
+  </data>
+  <data name="EnterAnEmail" xml:space="preserve">
+    <value>Geef een e-mailadres op.</value>
+  </data>
+  <data name="EnterAPassword" xml:space="preserve">
+    <value>Geef een wachtwoord op.</value>
+  </data>
+  <data name="EnterAUserName" xml:space="preserve">
+    <value>Geef een gebruikersnaam op.</value>
+  </data>
+  <data name="EnterAValidEmail" xml:space="preserve">
+    <value>Geef een geldig e-mailadres op.</value>
   </data>
   <data name="Home" xml:space="preserve">
     <value>Home</value>
   </data>
+  <data name="LogIn" xml:space="preserve">
+    <value>Inloggen</value>
+  </data>
+  <data name="LogOut" xml:space="preserve">
+    <value>Uitloggen</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>Volgende</value>
+  </data>
   <data name="nl-NL" xml:space="preserve">
     <value>Nederlands (Nederland)</value>
   </data>
+  <data name="Password" xml:space="preserve">
+    <value>Wachtwoord</value>
+  </data>
+  <data name="SignUp" xml:space="preserve">
+    <value>Aanmelden</value>
+  </data>
+  <data name="ThosePasswordsDidntMatch" xml:space="preserve">
+    <value>Deze wachtwoorden komen niet overeen. Probeer het opnieuw.</value>
+  </data>
+  <data name="UserName" xml:space="preserve">
+    <value>Gebruikersnaam</value>
+  </data>
   <data name="WorkInProgress" xml:space="preserve">
     <value>Onder constructie.</value>
+  </data>
+  <data name="WrongPassword" xml:space="preserve">
+    <value>Onjuist wachtwoord. Probeer het opnieuw.</value>
   </data>
 </root>

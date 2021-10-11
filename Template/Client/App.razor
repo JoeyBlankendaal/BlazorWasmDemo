@@ -1,8 +1,15 @@
-﻿<CascadingValue Value="this">
+﻿@using Template.Client.Pages.Account
+
+<CascadingValue Value="this">
     <Router AppAssembly="@typeof(App).Assembly">
         <Found Context="routeData">
             <PageTitle>@Config["App:Name"]</PageTitle>
-            <RouteView RouteData="@routeData" DefaultLayout="@typeof(Layout)" />
+
+            <AuthorizeRouteView RouteData="@routeData" DefaultLayout="@typeof(Layout)">
+                <NotAuthorized>
+                    <LogIn />
+                </NotAuthorized>
+            </AuthorizeRouteView>
         </Found>
 
         <NotFound>

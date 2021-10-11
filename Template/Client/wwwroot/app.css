@@ -9,10 +9,44 @@ a {
     text-decoration: none;
 }
 
-select {
-    border: 1px solid #ccc;
+button, input, select {
+    border-radius: 4px;
+    box-sizing: border-box;
     font-size: 100%;
-    padding: 8px;
+}
+
+button, select {
+    cursor: pointer;
+}
+
+button {
+    background: #005ca2;
+    border: 0;
+    color: #fff;
+    padding: 12px 24px;
+}
+
+input, select {
+    border: 1px solid #ccc;
+    outline: none;
+    padding: 12px;
+}
+
+label {
+    display: block;
+}
+
+/* Classes: */
+.green-text {
+    color: #10b981;
+}
+
+.red-text {
+    color: #ef4444;
+}
+
+p.margin-0 {
+    margin-top: 0;
 }
 
 /* Loading: */
@@ -75,6 +109,7 @@ body {
 
 #logo {
     font-size: 125%;
+    margin: 0;
 }
 
 nav {
@@ -90,14 +125,56 @@ nav {
             margin-left: 32px;
         }
 
+            nav > ul > li > button {
+                background: #fff;
+                color: #005ca2;
+                padding: 0;
+            }
+
 main {
     padding-top: 16px;
 }
 
+.small-container {
+    margin: 0 auto;
+    max-width: 95%;
+    width: 512px;
+}
+
+.box {
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    margin-top: 16px;
+    padding: 32px;
+}
+
+    .box input {
+        background: rgb(245, 245, 245);
+    }
+
 h1 {
     font-size: 150%;
     font-weight: normal;
+    margin: 0;
 }
+
+p {
+    margin: 16px 0 0 0;
+}
+
+form {
+    margin-top: 24px;
+}
+
+    form .input {
+        margin-bottom: 24px;
+    }
+
+    form input {
+        margin: 8px 0;
+        width: 100%;
+    }
 
 #footer {
     align-items: center;
@@ -105,6 +182,13 @@ h1 {
     height: 64px;
 }
 
+    #footer > p {
+        margin: 0;
+    }
+
     #footer > select {
+        background: 0;
+        border: 0;
         margin-left: auto;
+        padding: 0;
     }
