@@ -141,6 +141,9 @@
   <data name="EnterAValidEmail" xml:space="preserve">
     <value>Geef een geldig e-mailadres op.</value>
   </data>
+  <data name="Error404" xml:space="preserve">
+    <value>Error 404</value>
+  </data>
   <data name="Home" xml:space="preserve">
     <value>Home</value>
   </data>
@@ -155,6 +158,9 @@
   </data>
   <data name="nl-NL" xml:space="preserve">
     <value>Nederlands (Nederland)</value>
+  </data>
+  <data name="PageNotFound" xml:space="preserve">
+    <value>Pagina niet gevonden.</value>
   </data>
   <data name="Password" xml:space="preserve">
     <value>Wachtwoord</value>
