@@ -1,12 +1,19 @@
 ﻿@inherits LayoutComponentBase
 
-<div id="header">
-    <div class="container">
-        <p id="logo">@Config["App:Name"]</p>
-        <Nav />
+<div id="wrapper">
+    <div id="header">
+        <div class="container">
+            <p id="logo">@Config["App:Name"]</p>
+            <Nav />
+        </div>
     </div>
+
+    <main class="container">
+        @Body
+    </main>
 </div>
 
-<main class="container">
-    @Body
-</main>
+<div id="footer" class="container">
+    <p>&copy; @Config["App:Name"]</p>
+    <CultureForm />
+</div>
