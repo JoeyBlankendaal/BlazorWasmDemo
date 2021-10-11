@@ -51,7 +51,14 @@ public class UserController : ControllerBase
             var userName = User.Identity.Name;
             var user = await _userService.GetUserByUserName(userName);
 
-            info.CurrentUser = user ?? throw new NullReferenceException($"User '{userName} does not exist.");
+            if (user != null)
+            {
+                info.CurrentUser = user;
+            }
+            else
+            {
+                await _userService.LogOut();
+            }
         }
 
         return info;

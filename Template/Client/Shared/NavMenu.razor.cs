@@ -3,7 +3,7 @@ using Template.Client.Services;
 
 namespace Template.Client.Shared;
 
-public partial class Nav
+public partial class NavMenu
 {
     [Inject]
     public NavigationManager NavManager { get; set; }

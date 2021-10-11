@@ -2,11 +2,17 @@
 @attribute [Authorize]
 
 <div class="small-container">
-    <div class="box">
-        <h1>@Localizer["Settings"]</h1>
+    <div class="paddingless-box">
+        <header>
+            <h1>@Localizer["Settings"]</h1>
+        </header>
 
         <nav>
             <ul>
+                <li>
+                    <NavLink href="settings/account">@Localizer["AccountInformation"]</NavLink>
+                </li>
+
                 <li>
                     <NavLink href="settings/password">@Localizer["ChangeYourPassword"]</NavLink>
                 </li>

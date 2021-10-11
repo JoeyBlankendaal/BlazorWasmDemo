@@ -8,7 +8,7 @@ namespace Template.Client.Pages.Account;
 public partial class LogIn
 {
     public AccountLogInParameters Parameters = new();
-    public Result Result { get; set; } = new();
+    public Result Result { get; set; }
 
     [Inject]
     public NavigationManager NavManager { get; set; }
@@ -25,8 +25,11 @@ public partial class LogIn
         }
         catch (Exception ex)
         {
-            Result.HasSucceeded = false;
-            Result.Messages = new[] { ex.Message };
+            Result = new Result
+            {
+                HasSucceeded = false,
+                Messages = new[] { ex.Message }
+            };
         }
     }
 }

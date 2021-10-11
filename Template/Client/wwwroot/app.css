@@ -132,10 +132,19 @@ body {
             margin-left: 32px;
         }
 
+            #nav > ul > li > a, #nav > ul > li > button {
+                border-bottom: 1px solid #fff;
+                padding: 6px 0;
+            }
+
+                #nav > ul > li > a.active, #nav > ul > li > a:hover, #nav > ul > li > button:hover {
+                    border-bottom: 1px solid #005ca2;
+                }
+
             #nav > ul > li > button {
                 background: #fff;
+                border-radius: 0;
                 color: #005ca2;
-                padding: 0;
             }
 
 main {
@@ -148,17 +157,54 @@ main {
     width: 512px;
 }
 
-.box {
+.box, .paddingless-box {
     background: #fff;
     border: 1px solid #ccc;
     border-radius: 8px;
     margin-top: 16px;
-    padding: 32px;
 }
 
-    .box input {
+.box {
+    padding: 24px 28px;
+}
+
+    .box input, .paddingless-box input {
         background: rgb(245, 245, 245);
     }
+
+.paddingless-box header {
+    margin: 24px 28px 0 28px;
+}
+
+.paddingless-box form {
+    padding-bottom: 24px;
+}
+
+.paddingless-box nav > ul {
+    list-style-type: none;
+    margin: 16px 0 0 0;
+}
+
+    .paddingless-box nav > ul a {
+        border-top: 1px solid #ccc;
+        display: block;
+        padding: 20px 28px;
+    }
+
+        .paddingless-box nav > ul a:hover {
+            background: rgb(245, 245, 245);
+            border-bottom-left-radius: 8px;
+            border-bottom-right-radius: 8px;
+        }
+
+.paddingless-box hr {
+    margin: 20px 0 28px 0;
+}
+
+.paddingless-box button, .paddingless-box .input, .paddingless-box p {
+    margin-left: 28px;
+    margin-right: 28px;
+}
 
 h1 {
     font-size: 150%;
