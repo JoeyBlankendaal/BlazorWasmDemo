@@ -32,6 +32,13 @@ input, select {
     padding: 12px;
 }
 
+hr {
+    background: #ccc;
+    border: 0;
+    height: 1px;
+    margin-bottom: 16px;
+}
+
 label {
     display: block;
 }
@@ -112,20 +119,20 @@ body {
     margin: 0;
 }
 
-nav {
+#nav {
     margin-left: 16px;
 }
 
-    nav > ul {
-        padding: 0;
+    #nav > ul {
+        margin: 0;
     }
 
-        nav > ul > li {
+        #nav > ul > li {
             display: inline-block;
             margin-left: 32px;
         }
 
-            nav > ul > li > button {
+            #nav > ul > li > button {
                 background: #fff;
                 color: #005ca2;
                 padding: 0;
@@ -163,12 +170,17 @@ p {
     margin: 16px 0 0 0;
 }
 
+ul {
+    margin: 16px 0 0 18px;
+    padding: 0;
+}
+
 form {
     margin-top: 24px;
 }
 
-    form .input {
-        margin-bottom: 24px;
+    form .input, form button {
+        margin-top: 16px;
     }
 
     form input {

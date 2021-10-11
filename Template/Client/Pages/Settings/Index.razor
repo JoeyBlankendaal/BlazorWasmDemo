@@ -1,0 +1,16 @@
+﻿@page "/settings"
+@attribute [Authorize]
+
+<div class="small-container">
+    <div class="box">
+        <h1>@Localizer["Settings"]</h1>
+
+        <nav>
+            <ul>
+                <li>
+                    <NavLink href="settings/password">@Localizer["ChangeYourPassword"]</NavLink>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</div>

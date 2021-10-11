@@ -85,4 +85,25 @@ public class UserController : ControllerBase
         await _userService.LogOut();
         return Ok();
     }
+
+    [Authorize]
+    [HttpPut("password")]
+    public async Task<IActionResult> SetPassword(SettingsPasswordParameters parameters)
+    {
+        var user = await _userService.GetCurrentUser(User);
+
+        if (user == null)
+        {
+            return BadRequest("ThisUserDoesNotExist");
+        }
+
+        var result = await _userService.SetPassword(user, parameters.CurrentPassword, parameters.NewPassword);
+
+        if (!result.HasSucceeded)
+        {
+            return BadRequest(result.Message);
+        }
+
+        return Ok();
+    }
 }

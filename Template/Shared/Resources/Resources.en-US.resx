@@ -117,11 +117,17 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ChangeYourPassword" xml:space="preserve">
+    <value>Change your password</value>
+  </data>
   <data name="ConfirmPassword" xml:space="preserve">
     <value>Confirm password</value>
   </data>
   <data name="CreateYourAccount" xml:space="preserve">
     <value>Create your account</value>
+  </data>
+  <data name="CurrentPassword" xml:space="preserve">
+    <value>Current password</value>
   </data>
   <data name="Email" xml:space="preserve">
     <value>Email</value>
@@ -153,6 +159,9 @@
   <data name="LogOut" xml:space="preserve">
     <value>Sign out</value>
   </data>
+  <data name="NewPassword" xml:space="preserve">
+    <value>New password</value>
+  </data>
   <data name="Next" xml:space="preserve">
     <value>Next</value>
   </data>
@@ -165,8 +174,17 @@
   <data name="Password" xml:space="preserve">
     <value>Password</value>
   </data>
+  <data name="Save" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="Settings" xml:space="preserve">
+    <value>Settings</value>
+  </data>
   <data name="SignUp" xml:space="preserve">
     <value>Sign up</value>
+  </data>
+  <data name="ThisUserDoesNotExist" xml:space="preserve">
+    <value>This user does not exist.</value>
   </data>
   <data name="ThosePasswordsDidntMatch" xml:space="preserve">
     <value>Those passwords didn't match. Try again.</value>
@@ -179,5 +197,8 @@
   </data>
   <data name="WrongPassword" xml:space="preserve">
     <value>Wrong password. Try again.</value>
+  </data>
+  <data name="YourPasswordHasBeenChanged" xml:space="preserve">
+    <value>Your password has been changed.</value>
   </data>
 </root>

@@ -117,11 +117,17 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ChangeYourPassword" xml:space="preserve">
+    <value>Wachtwoord veranderen</value>
+  </data>
   <data name="ConfirmPassword" xml:space="preserve">
     <value>Wachtwoord bevestigen</value>
   </data>
   <data name="CreateYourAccount" xml:space="preserve">
     <value>Account aanmaken</value>
+  </data>
+  <data name="CurrentPassword" xml:space="preserve">
+    <value>Huidig wachtwoord</value>
   </data>
   <data name="Email" xml:space="preserve">
     <value>E-mailadres</value>
@@ -153,6 +159,9 @@
   <data name="LogOut" xml:space="preserve">
     <value>Uitloggen</value>
   </data>
+  <data name="NewPassword" xml:space="preserve">
+    <value>Nieuw wachtwoord</value>
+  </data>
   <data name="Next" xml:space="preserve">
     <value>Volgende</value>
   </data>
@@ -165,8 +174,17 @@
   <data name="Password" xml:space="preserve">
     <value>Wachtwoord</value>
   </data>
+  <data name="Save" xml:space="preserve">
+    <value>Opslaan</value>
+  </data>
+  <data name="Settings" xml:space="preserve">
+    <value>Instellingen</value>
+  </data>
   <data name="SignUp" xml:space="preserve">
     <value>Aanmelden</value>
+  </data>
+  <data name="ThisUserDoesNotExist" xml:space="preserve">
+    <value>Deze gebruiker bestaat niet.</value>
   </data>
   <data name="ThosePasswordsDidntMatch" xml:space="preserve">
     <value>Deze wachtwoorden komen niet overeen. Probeer het opnieuw.</value>
@@ -179,5 +197,8 @@
   </data>
   <data name="WrongPassword" xml:space="preserve">
     <value>Onjuist wachtwoord. Probeer het opnieuw.</value>
+  </data>
+  <data name="YourPasswordHasBeenChanged" xml:space="preserve">
+    <value>Je wachtwoord is veranderd.</value>
   </data>
 </root>

@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using System.Security.Claims;
 using Template.Shared;
 using Template.Shared.Models;
 
@@ -7,11 +8,14 @@ namespace Template.Server.Services;
 public interface IUserService
 {
     public Task<Result> Create(User user, string password);
+    public Task<User> GetCurrentUser(ClaimsPrincipal principal);
     public Task<User> GetUserByEmail(string email);
+    public Task<User> GetUserById(string id);
     public Task<User> GetUserByUserName(string userName);
     public Task LogIn(User user);
     public Task<Result> LogIn(User user, string password);
     public Task LogOut();
+    public Task<Result> SetPassword(User user, string currentPassword, string newPassword);
 }
 
 public class UserService : IUserService
@@ -36,9 +40,19 @@ public class UserService : IUserService
         };
     }
 
+    public async Task<User> GetCurrentUser(ClaimsPrincipal principal)
+    {
+        return await _userManager.GetUserAsync(principal);
+    }
+
     public async Task<User> GetUserByEmail(string email)
     {
         return await _userManager.FindByEmailAsync(email);
+    }
+
+    public async Task<User> GetUserById(string id)
+    {
+        return await _userManager.FindByIdAsync(id);
     }
 
     public async Task<User> GetUserByUserName(string userName)
@@ -64,5 +78,16 @@ public class UserService : IUserService
     public async Task LogOut()
     {
         await _signInManager.SignOutAsync();
+    }
+
+    public async Task<Result> SetPassword(User user, string currentPassword, string newPassword)
+    {
+        var result = await _userManager.ChangePasswordAsync(user, currentPassword, newPassword);
+
+        return new Result
+        {
+            HasSucceeded = result.Succeeded,
+            Messages = result.Errors.Select(ie => ie.Description).ToArray()
+        };
     }
 }

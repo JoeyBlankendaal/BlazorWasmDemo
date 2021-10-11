@@ -45,6 +45,11 @@ public class UserService : AuthenticationStateProvider
         NotifyAuthenticationStateChanged(GetAuthenticationStateAsync());
     }
 
+    public async Task SetPassword(SettingsPasswordParameters parameters)
+    {
+        await _userApi.SetPassword(parameters);
+    }
+
     public override async Task<AuthenticationState> GetAuthenticationStateAsync()
     {
         var identity = new ClaimsIdentity();

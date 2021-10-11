@@ -1,4 +1,4 @@
-﻿<nav>
+﻿<nav id="nav">
     <ul>
         <li>
             <NavLink href="" Match="NavLinkMatch.All">@Localizer["Home"]</NavLink>
@@ -6,6 +6,10 @@
 
         <AuthorizeView>
             <Authorized>
+                <li>
+                    <NavLink href="settings">@Localizer["Settings"]</NavLink>
+                </li>
+                
                 <li>
                     <button @onclick="@OnClickLogOut">@Localizer["LogOut"]</button>
                 </li>
