@@ -1,0 +1,47 @@
+﻿/* Defaults: */
+a {
+    color: #005ca2;
+    text-decoration: none;
+}
+
+/* Layout: */
+body {
+    background: rgb(245, 245, 245);
+    font: normal 15px sans-serif;
+    margin: 0;
+}
+
+#header {
+    background: #fff;
+    border-bottom: 1px solid #ccc;
+    height: 64px;
+}
+
+    #header > .container {
+        align-items: center;
+        display: flex;
+        height: inherit;
+    }
+
+.container {
+    margin: 0 auto;
+    max-width: 90%;
+    width: 1080px;
+}
+
+nav > ul {
+    padding: 0;
+}
+
+nav > ul > li {
+    display: inline-block;
+}
+
+main {
+    padding-top: 16px;
+}
+
+h1 {
+    font-size: 150%;
+    font-weight: normal;
+}

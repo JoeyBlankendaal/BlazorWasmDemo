@@ -1,0 +1,9 @@
+{
+  "name": "Template",
+  "short_name": "Template",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#005ca2",
+  "prefer_related_applications": false
+}
