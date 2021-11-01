@@ -1,0 +1,15 @@
+﻿@page "/account/confirm-email/{Id}/{Token}"
+
+@if (Result == null)
+{
+    <div class="spinner"></div>
+}
+else
+{
+    <div class="small-container">
+        <div class="box">
+            <h1>@Localizer["ConfirmYourEmail"]</h1>
+            <p class="@(Result.HasSucceeded ? "green-text" : "red-text")">@Result.Message</p>
+        </div>
+    </div>
+}

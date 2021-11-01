@@ -39,7 +39,7 @@ namespace Template.Shared.Resources {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Template.Shared.Resources.nl-NL", typeof(Resources_nl_NL).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Template.Shared.Resources.nl_NL", typeof(Resources_nl_NL).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

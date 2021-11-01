@@ -9,6 +9,8 @@ builder.Host.AddConfiguration("appsettings.json");
 
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<DbContext>();
+builder.Services.AddScoped<IEmailSender, EmailSender>();
+builder.Services.AddLocalization(config.GetSection("App:Cultures").Get<string[]>(), config["App:DefaultCulture"]);
 builder.Services.AddRazorPages();
 builder.Services.AddUserService();
 
@@ -32,6 +34,7 @@ app.UseStaticFiles();
 app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
+app.UseLocalization();
 
 app.MapRazorPages();
 app.MapControllers();

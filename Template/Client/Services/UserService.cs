@@ -15,6 +15,12 @@ public class UserService : AuthenticationStateProvider
         _userApi = userApi;
     }
 
+    public async Task ConfirmEmail(AccountConfirmEmailParameters parameters)
+    {
+        await _userApi.ConfirmEmail(parameters);
+        NotifyAuthenticationStateChanged(GetAuthenticationStateAsync());
+    }
+
     public async Task Create(AccountCreateParameters parameters)
     {
         await _userApi.Create(parameters);

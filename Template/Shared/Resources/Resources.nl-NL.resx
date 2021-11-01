@@ -123,8 +123,18 @@
   <data name="ChangeYourPassword" xml:space="preserve">
     <value>Wachtwoord veranderen</value>
   </data>
+  <data name="ConfirmEmailEmailBody" xml:space="preserve">
+    <value>Hallo {user},
+
+Klik &lt;a href="{url}"&gt;hier&lt;/a&gt; om je e-mailadres te bevestigen.
+
+{app}</value>
+  </data>
   <data name="ConfirmPassword" xml:space="preserve">
     <value>Wachtwoord bevestigen</value>
+  </data>
+  <data name="ConfirmYourEmail" xml:space="preserve">
+    <value>E-mailadres bevestigen</value>
   </data>
   <data name="CreateYourAccount" xml:space="preserve">
     <value>Account aanmaken</value>

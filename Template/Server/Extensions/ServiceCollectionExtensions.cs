@@ -1,14 +1,46 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Localization;
+using System.Globalization;
+using System.Reflection;
 using Template.Server.Services;
 using Template.Shared.Models;
+using Template.Shared.Services;
 
 namespace Template.Server.Extensions;
 
 public static class ServiceCollectionExtensions
 {
+    public static void AddLocalization(this IServiceCollection services, string[] cultures, string defaultCulture)
+    {
+        // Get Server project path.
+        var serverPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location).Split(@"bin\")[0];
+
+        // Get Shared Resources path.
+        var resourcesPath = Path.Combine(serverPath.Replace("Server", "Shared"), "Resources");
+
+        services.AddLocalization();
+        services.AddScoped<Localizer>();
+
+        services.Configure<RequestLocalizationOptions>(options =>
+        {
+            var supportedCultures = cultures.Select(c => new CultureInfo(c)).ToArray();
+
+            options.DefaultRequestCulture = new RequestCulture(defaultCulture);
+            options.SupportedCultures = supportedCultures;
+            options.SupportedUICultures = supportedCultures;
+        });
+
+        var culture = new CultureInfo(defaultCulture);
+
+        CultureInfo.DefaultThreadCurrentCulture = culture;
+        CultureInfo.DefaultThreadCurrentUICulture = culture;
+    }
+
     public static void AddUserService(this IServiceCollection services)
     {
         services.AddIdentity<User, Role>().AddEntityFrameworkStores<DbContext>().AddDefaultTokenProviders();
+
+        services.AddScoped<IUserEmailSender, UserEmailSender>();
         services.AddScoped<IUserService, UserService>();
 
         services.Configure<IdentityOptions>(options =>

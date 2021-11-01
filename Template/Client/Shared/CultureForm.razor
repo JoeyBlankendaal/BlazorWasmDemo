@@ -1,5 +1,5 @@
 ﻿<select @bind="App.Culture">
-    @foreach (var culture in App.Cultures.OrderBy(c => Localizer[c.Name].Value))
+    @foreach (var culture in App.Cultures.OrderBy(c => Localizer[c.Name]))
     {
         <option value="@culture">@Localizer[culture.Name]</option>
     }

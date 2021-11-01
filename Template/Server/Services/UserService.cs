@@ -7,11 +7,13 @@ namespace Template.Server.Services;
 
 public interface IUserService
 {
+    public Task<Result> ConfirmEmail(User user, string token);
     public Task<Result> Create(User user, string password);
     public Task<User> GetCurrentUser(ClaimsPrincipal principal);
     public Task<User> GetUserByEmail(string email);
     public Task<User> GetUserById(string id);
     public Task<User> GetUserByUserName(string userName);
+    public Task<string> GenerateEmailConfirmationToken(User user);
     public Task LogIn(User user);
     public Task<Result> LogIn(User user, string password);
     public Task LogOut();
@@ -29,6 +31,17 @@ public class UserService : IUserService
         _userManager = userManager;
     }
 
+    public async Task<Result> ConfirmEmail(User user, string token)
+    {
+        var result = await _userManager.ConfirmEmailAsync(user, token);
+
+        return new Result
+        {
+            HasSucceeded = result.Succeeded,
+            Messages = result.Errors.Select(ie => ie.Description).ToArray()
+        };
+    }
+
     public async Task<Result> Create(User user, string password)
     {
         var result = await _userManager.CreateAsync(user, password);
@@ -38,6 +51,11 @@ public class UserService : IUserService
             HasSucceeded = result.Succeeded,
             Messages = result.Errors.Select(ie => ie.Description).ToArray()
         };
+    }
+
+    public async Task<string> GenerateEmailConfirmationToken(User user)
+    {
+        return await _userManager.GenerateEmailConfirmationTokenAsync(user);
     }
 
     public async Task<User> GetCurrentUser(ClaimsPrincipal principal)

@@ -7,6 +7,7 @@ namespace Template.Client.Services;
 
 public interface IUserApi
 {
+    public Task ConfirmEmail(AccountConfirmEmailParameters parameters);
     public Task Create(AccountCreateParameters parameters);
     public Task<UserInfo> GetUserInfo();
     public Task LogIn(AccountLogInParameters parameters);
@@ -21,6 +22,18 @@ public class UserApi : IUserApi
     public UserApi(HttpClient http)
     {
         _http = http;
+    }
+
+    public async Task ConfirmEmail(AccountConfirmEmailParameters parameters)
+    {
+        var result = await _http.PostAsJsonAsync("api/user/confirm-email", parameters);
+
+        if (result.StatusCode == HttpStatusCode.BadRequest)
+        {
+            throw new Exception(await result.Content.ReadAsStringAsync());
+        }
+
+        result.EnsureSuccessStatusCode();
     }
 
     public async Task Create(AccountCreateParameters parameters)
