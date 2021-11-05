@@ -1,4 +1,4 @@
-﻿<select @bind="App.Culture">
+﻿<select value="@App.Culture" @onchange="App.SetCulture">
     @foreach (var culture in App.Cultures.OrderBy(c => Localizer[c.Name]))
     {
         <option value="@culture">@Localizer[culture.Name]</option>

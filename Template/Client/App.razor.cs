@@ -1,11 +1,16 @@
 ﻿using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
 using System.Globalization;
+using Template.Client.Services;
+using Template.Shared.Parameters;
 
 namespace Template.Client;
 
 public partial class App
 {
+    [Inject]
+    public ICultureApi CultureApi { get; set; }
+
     [Inject]
     public IJSRuntime JS { get; set; }
 
@@ -25,6 +30,17 @@ public partial class App
                 NavManager.NavigateTo(NavManager.Uri, forceLoad: true);
             }
         }
+    }
+
+    public async Task SetCulture(ChangeEventArgs args)
+    {
+        var name = args.Value.ToString();
+
+        // Set culture on client
+        Culture = new CultureInfo(name);
+
+        // Pass culture name to server
+        await CultureApi.SetCulture(new CultureFormParameters { CultureName = name });
     }
 
     protected override void OnInitialized()

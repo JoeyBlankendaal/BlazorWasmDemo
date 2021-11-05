@@ -11,13 +11,13 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<Compile Update="Resources\Resources.en-US.Designer.cs">
+		<Compile Update="Resources.en-US.Designer.cs">
 			<AutoGen>True</AutoGen>
 			<DependentUpon>Resources.en-US.resx</DependentUpon>
 			<DesignTime>True</DesignTime>
 		</Compile>
 
-		<Compile Update="Resources\Resources.nl-NL.Designer.cs">
+		<Compile Update="Resources.nl-NL.Designer.cs">
 			<AutoGen>True</AutoGen>
 			<DependentUpon>Resources.nl-NL.resx</DependentUpon>
 			<DesignTime>True</DesignTime>
@@ -25,11 +25,11 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<EmbeddedResource Update="Resources\Resources.en-US.resx">
+		<EmbeddedResource Update="Resources.en-US.resx">
 			<Generator>PublicResXFileCodeGenerator</Generator>
 		</EmbeddedResource>
 
-		<EmbeddedResource Update="Resources\Resources.nl-NL.resx">
+		<EmbeddedResource Update="Resources.nl-NL.resx">
 			<Generator>PublicResXFileCodeGenerator</Generator>
 		</EmbeddedResource>
 	</ItemGroup>

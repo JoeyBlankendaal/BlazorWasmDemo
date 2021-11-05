@@ -10,7 +10,12 @@ builder.Host.AddConfiguration("appsettings.json");
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<DbContext>();
 builder.Services.AddScoped<IEmailSender, EmailSender>();
-builder.Services.AddLocalization(config.GetSection("App:Cultures").Get<string[]>(), config["App:DefaultCulture"]);
+
+builder.Services.AddLocalization(
+    config.GetSection("App:Cultures").Get<string[]>(),
+    config["App:DefaultCulture"],
+    config["App:CookieNames:Culture"]);
+
 builder.Services.AddRazorPages();
 builder.Services.AddUserService();
 
@@ -29,12 +34,12 @@ else
 }
 
 app.UseHttpsRedirection();
+app.UseLocalization();
 app.UseBlazorFrameworkFiles();
 app.UseStaticFiles();
 app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
-app.UseLocalization();
 
 app.MapRazorPages();
 app.MapControllers();

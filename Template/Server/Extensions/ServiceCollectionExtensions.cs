@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Localization;
 using System.Globalization;
-using System.Reflection;
 using Template.Server.Services;
 using Template.Shared.Models;
 using Template.Shared.Services;
@@ -10,14 +9,8 @@ namespace Template.Server.Extensions;
 
 public static class ServiceCollectionExtensions
 {
-    public static void AddLocalization(this IServiceCollection services, string[] cultures, string defaultCulture)
+    public static void AddLocalization(this IServiceCollection services, string[] cultures, string defaultCulture, string cookieName)
     {
-        // Get Server project path.
-        var serverPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location).Split(@"bin\")[0];
-
-        // Get Shared Resources path.
-        var resourcesPath = Path.Combine(serverPath.Replace("Server", "Shared"), "Resources");
-
         services.AddLocalization();
         services.AddScoped<Localizer>();
 
@@ -26,6 +19,7 @@ public static class ServiceCollectionExtensions
             var supportedCultures = cultures.Select(c => new CultureInfo(c)).ToArray();
 
             options.DefaultRequestCulture = new RequestCulture(defaultCulture);
+            options.RequestCultureProviders = new[] { new CookieRequestCultureProvider { CookieName = cookieName } };
             options.SupportedCultures = supportedCultures;
             options.SupportedUICultures = supportedCultures;
         });

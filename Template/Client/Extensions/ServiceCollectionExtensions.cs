@@ -10,6 +10,7 @@ public static class ServiceCollectionExtensions
     {
         services.AddLocalization();
         services.AddScoped<Localizer>();
+        services.AddScoped<ICultureApi, CultureApi>();
     }
 
     public static void AddUserService(this IServiceCollection services)
