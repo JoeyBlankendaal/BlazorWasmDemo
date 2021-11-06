@@ -5,8 +5,8 @@
         <h1>@Localizer["CreateYourAccount"]</h1>
 
         <EditForm OnValidSubmit="OnValidSubmit" Model="Parameters">
-            <DataAnnotationsValidator />
-    
+            <LocalizedDataAnnotationsValidator />
+
             <div class="input">
                 <label for="user-name">@Localizer["UserName"]</label>
                 <InputText id="user-name" autofocus @bind-Value="Parameters.UserName" />

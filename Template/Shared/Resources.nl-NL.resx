@@ -124,9 +124,9 @@
     <value>Wachtwoord veranderen</value>
   </data>
   <data name="ConfirmEmailEmailBody" xml:space="preserve">
-    <value>Hallo {user},
+    <value>Hallo {user},&lt;br&gt;&lt;br&gt;
 
-Klik &lt;a href="{url}"&gt;hier&lt;/a&gt; om je e-mailadres te bevestigen.
+Klik &lt;a href="{url}"&gt;hier&lt;/a&gt; om je e-mailadres te bevestigen.&lt;br&gt;&lt;br&gt;
 
 {app}</value>
   </data>

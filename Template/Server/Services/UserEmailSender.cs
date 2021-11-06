@@ -30,9 +30,9 @@ public class UserEmailSender : IUserEmailSender
 
         var body = _localizer["ConfirmEmailEmailBody"]
             .ToString()
-            .Replace("{userName}", user.UserName)
+            .Replace("{user}", user.UserName)
             .Replace("{url}", url)
-            .Replace("{appName}", _config["App:Name"]);
+            .Replace("{app}", _config["App:Name"]);
 
         _emailSender.Send(
             _config["Smtp:Username"],

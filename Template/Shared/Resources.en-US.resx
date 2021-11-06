@@ -124,9 +124,9 @@
     <value>Change your password</value>
   </data>
   <data name="ConfirmEmailEmailBody" xml:space="preserve">
-    <value>Hello {user},
+    <value>Hello {user},&lt;br&gt;&lt;br&gt;
 
-Click &lt;a href="{url}"&gt;here&lt;/a&gt; to confirm your email address.
+Click &lt;a href="{url}"&gt;here&lt;/a&gt; to confirm your email address.&lt;br&gt;&lt;br&gt;
 
 {app}</value>
   </data>
