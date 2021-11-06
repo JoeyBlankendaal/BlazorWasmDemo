@@ -17,3 +17,16 @@
     <p>&copy; @Config["App:Name"]</p>
     <CultureForm />
 </div>
+
+<div id="alerts">
+    <AuthorizeView>
+        <Authorized>
+            @if (!UserService.User.EmailConfirmed)
+            {
+                <div class="alert">
+                    <p>Please confirm your email address.</p>
+                </div>
+            }
+        </Authorized>
+    </AuthorizeView>
+</div>

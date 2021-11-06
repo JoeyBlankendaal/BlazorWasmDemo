@@ -250,3 +250,22 @@ form {
         margin-left: auto;
         padding: 0;
     }
+
+#alerts {
+    bottom: 0;
+    position: fixed;
+    right: 0;
+}
+
+.alert {
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    margin: 0 24px 28px 0;
+    padding: 24px 28px;
+    width: 256px;
+}
+
+    .alert > p {
+        margin: 0;
+    }

@@ -10,6 +10,8 @@ public class UserService : AuthenticationStateProvider
     private readonly IUserApi _userApi;
     private UserInfo _userInfo;
 
+    public User User { get; set; }
+
     public UserService(IUserApi userApi)
     {
         _userApi = userApi;
@@ -73,6 +75,7 @@ public class UserService : AuthenticationStateProvider
                 .Concat(userInfo.ExposedClaims.Select(c => new Claim(c.Key, c.Value)));
 
                 identity = new ClaimsIdentity(claims, "User");
+                User = userInfo.CurrentUser;
             }
         }
         catch (HttpRequestException ex)
