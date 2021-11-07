@@ -10,8 +10,6 @@ public class UserService : AuthenticationStateProvider
     private readonly IUserApi _userApi;
     private UserInfo _userInfo;
 
-    public User User { get; set; }
-
     public UserService(IUserApi userApi)
     {
         _userApi = userApi;
@@ -27,6 +25,11 @@ public class UserService : AuthenticationStateProvider
     {
         await _userApi.Create(parameters);
         NotifyAuthenticationStateChanged(GetAuthenticationStateAsync());
+    }
+
+    public User GetCurrentUser()
+    {
+        return _userInfo.CurrentUser;
     }
 
     private async Task<UserInfo> GetUserInfo()
@@ -53,6 +56,11 @@ public class UserService : AuthenticationStateProvider
         NotifyAuthenticationStateChanged(GetAuthenticationStateAsync());
     }
 
+    public async Task ResendEmailConfirmationUrl()
+    {
+        await _userApi.ResendEmailConfirmationUrl();
+    }
+
     public async Task SetPassword(SettingsPasswordParameters parameters)
     {
         await _userApi.SetPassword(parameters);
@@ -75,7 +83,6 @@ public class UserService : AuthenticationStateProvider
                 .Concat(userInfo.ExposedClaims.Select(c => new Claim(c.Key, c.Value)));
 
                 identity = new ClaimsIdentity(claims, "User");
-                User = userInfo.CurrentUser;
             }
         }
         catch (HttpRequestException ex)

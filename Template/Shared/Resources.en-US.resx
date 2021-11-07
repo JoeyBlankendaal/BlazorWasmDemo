@@ -120,6 +120,9 @@
   <data name="AccountInformation" xml:space="preserve">
     <value>Account information</value>
   </data>
+  <data name="AConfirmationLinkHasBeenSentToEmail" xml:space="preserve">
+    <value>A confirmation link has been sent to &lt;strong&gt;{email}&lt;/strong&gt;.</value>
+  </data>
   <data name="ChangeYourPassword" xml:space="preserve">
     <value>Change your password</value>
   </data>
@@ -186,6 +189,9 @@ Click &lt;a href="{url}"&gt;here&lt;/a&gt; to confirm your email address.&lt;br&
   </data>
   <data name="Password" xml:space="preserve">
     <value>Password</value>
+  </data>
+  <data name="ResendLink" xml:space="preserve">
+    <value>Resend link</value>
   </data>
   <data name="Save" xml:space="preserve">
     <value>Save</value>

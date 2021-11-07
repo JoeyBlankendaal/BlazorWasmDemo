@@ -64,10 +64,8 @@ public class UserController : ControllerBase
         }
 
         var token = await _userService.GenerateEmailConfirmationToken(user);
-
-        _userEmailSender.SendEmailConfirmationToken(user, token);
+        _userEmailSender.SendEmailConfirmationUrl(user, token);
         await _userService.LogIn(user);
-
         return Ok();
     }
 
@@ -105,7 +103,7 @@ public class UserController : ControllerBase
 
         if (user == null)
         {
-            // Mask that a user with that email does not exist.
+            // Mask that a user with that email does not exist
             return BadRequest(_localizer["WrongPassword"]);
         }
 
@@ -124,6 +122,22 @@ public class UserController : ControllerBase
     public async Task<IActionResult> LogOut()
     {
         await _userService.LogOut();
+        return Ok();
+    }
+
+    [Authorize]
+    [HttpPut("resend-email-confirmation-url")]
+    public async Task<IActionResult> ResendEmailConfirmationUrl(EmptyParameters parameters)
+    {
+        var user = await _userService.GetCurrentUser(User);
+
+        if (user == null)
+        {
+            return BadRequest(_localizer["ThisUserDoesNotExist"]);
+        }
+
+        var token = await _userService.GenerateEmailConfirmationToken(user);
+        _userEmailSender.SendEmailConfirmationUrl(user, token);
         return Ok();
     }
 

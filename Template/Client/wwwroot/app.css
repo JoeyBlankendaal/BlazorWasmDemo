@@ -26,6 +26,14 @@ button {
     padding: 12px 24px;
 }
 
+/* Mimics an anchor */
+button.a {
+    background: 0;
+    border-radius: 0;
+    color: #005ca2;
+    padding: 0;
+}
+
 input, select {
     border: 1px solid #ccc;
     outline: none;
@@ -52,8 +60,12 @@ label {
     color: #ef4444;
 }
 
-p.margin-0 {
+.margin-0 {
     margin-top: 0;
+}
+
+.margin-1 {
+    margin-top: 16px;
 }
 
 /* Loading: */
@@ -88,7 +100,8 @@ p.margin-0 {
 /* Layout: */
 body {
     background: rgb(245, 245, 245);
-    font: normal 15px sans-serif;
+    font: normal 16px sans-serif;
+    line-height: 1.5;
     margin: 0;
 }
 
@@ -173,7 +186,7 @@ main {
     }
 
 .paddingless-box header {
-    margin: 24px 28px 0 28px;
+    margin: 20px 28px 0 28px;
 }
 
 .paddingless-box form {
@@ -188,7 +201,7 @@ main {
     .paddingless-box nav > ul a {
         border-top: 1px solid #ccc;
         display: block;
-        padding: 20px 28px;
+        padding: 16px 28px;
     }
 
         .paddingless-box nav > ul a:hover {
@@ -222,7 +235,7 @@ ul {
 }
 
 form {
-    margin-top: 24px;
+    margin-top: 16px;
 }
 
     form .input, form button {
@@ -263,7 +276,7 @@ form {
     border-radius: 8px;
     margin: 0 24px 28px 0;
     padding: 24px 28px;
-    width: 256px;
+    width: 288px;
 }
 
     .alert > p {

@@ -21,11 +21,16 @@
 <div id="alerts">
     <AuthorizeView>
         <Authorized>
-            @if (!UserService.User.EmailConfirmed)
-            {
-                <div class="alert">
-                    <p>Please confirm your email address.</p>
-                </div>
+            @{
+                var user = UserService.GetCurrentUser();
+
+                if (!user.EmailConfirmed)
+                {
+                    <div class="alert">
+                        <p>@((MarkupString)Localizer["AConfirmationLinkHasBeenSentToEmail"].Replace("{email}", user.Email))</p>
+                        <button class="a margin-1" @onclick="ResendEmailConfirmationUrl">@Localizer["ResendLink"]</button>
+                    </div>
+                }
             }
         </Authorized>
     </AuthorizeView>

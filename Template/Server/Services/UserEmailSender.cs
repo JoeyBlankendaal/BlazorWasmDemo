@@ -7,7 +7,7 @@ namespace Template.Server.Services;
 
 public interface IUserEmailSender
 {
-    public void SendEmailConfirmationToken(User user, string token);
+    public void SendEmailConfirmationUrl(User user, string token);
 }
 
 public class UserEmailSender : IUserEmailSender
@@ -23,13 +23,12 @@ public class UserEmailSender : IUserEmailSender
         _localizer = localizer;
     }
 
-    public void SendEmailConfirmationToken(User user, string token)
+    public void SendEmailConfirmationUrl(User user, string token)
     {
         var url = $"{_config["App:Url"]}/account/confirm-email/{user.Id}/"
             + WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(token));
 
         var body = _localizer["ConfirmEmailEmailBody"]
-            .ToString()
             .Replace("{user}", user.UserName)
             .Replace("{url}", url)
             .Replace("{app}", _config["App:Name"]);

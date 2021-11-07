@@ -11,7 +11,7 @@ public partial class NavMenu
     [Inject]
     public UserService UserService { get; set; }
 
-    public async Task OnClickLogOut()
+    public async Task LogOut()
     {
         await UserService.LogOut();
         NavManager.NavigateTo("");

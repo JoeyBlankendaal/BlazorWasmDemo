@@ -12,6 +12,7 @@ public interface IUserApi
     public Task<UserInfo> GetUserInfo();
     public Task LogIn(AccountLogInParameters parameters);
     public Task LogOut();
+    public Task ResendEmailConfirmationUrl();
     public Task SetPassword(SettingsPasswordParameters parameters);
 }
 
@@ -69,6 +70,18 @@ public class UserApi : IUserApi
     {
         var response = await _http.DeleteAsync("api/user/log-out");
         response.EnsureSuccessStatusCode();
+    }
+
+    public async Task ResendEmailConfirmationUrl()
+    {
+        var result = await _http.PutAsJsonAsync("api/user/resend-email-confirmation-url", new EmptyParameters());
+
+        if (result.StatusCode == HttpStatusCode.BadRequest)
+        {
+            throw new Exception(await result.Content.ReadAsStringAsync());
+        }
+
+        result.EnsureSuccessStatusCode();
     }
 
     public async Task SetPassword(SettingsPasswordParameters parameters)
