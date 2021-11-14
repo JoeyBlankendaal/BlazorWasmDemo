@@ -190,6 +190,9 @@ Click &lt;a href="{url}"&gt;here&lt;/a&gt; to confirm your email address.&lt;br&
   <data name="Password" xml:space="preserve">
     <value>Password</value>
   </data>
+  <data name="Portfolios" xml:space="preserve">
+    <value>Portfolios</value>
+  </data>
   <data name="ResendLink" xml:space="preserve">
     <value>Resend link</value>
   </data>

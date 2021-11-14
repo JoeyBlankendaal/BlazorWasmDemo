@@ -1,72 +1,43 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore;
-using Template.Shared.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using Template.Server.Areas.Finance.Services;
+using Template.Server.Areas.Identity.Services;
+using Template.Shared.Areas.Finance.Models;
+using Template.Shared.Areas.Identity.Models;
+using EntityFramework = Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace Template.Server.Services;
 
-public interface IDbContext
+public class DbContext :
+    EntityFramework.IdentityDbContext<User, Role, Guid, UserClaim, UserRole, UserLogin, RoleClaim, UserToken>,
+    IFinanceDbContext,
+    IIdentityDbContext
 {
-    public DbSet<Role> Roles { get; set; }
-    public DbSet<RoleClaim> RoleClaims { get; set; }
-    public DbSet<User> Users { get; set; }
-    public DbSet<UserClaim> UserClaims { get; set; }
-    public DbSet<UserLogin> UserLogins { get; set; }
-    public DbSet<UserRole> UserRoles { get; set; }
-    public DbSet<UserToken> UserTokens { get; set; }
-}
+    private readonly string[] _areas;
+    private readonly string _connectionString;
 
-public class DbContext
-    : IdentityDbContext<User, Role, Guid, UserClaim, UserRole, UserLogin, RoleClaim, UserToken>, IDbContext
-{
-    private readonly IConfiguration _config;
+    #region Finance
+    public DbSet<Cryptocurrency> Cryptocurrencies { get; set; }
+    public DbSet<Currency> Currencies { get; set; }
+    public DbSet<Portfolio> Portfolios { get; set; }
+    public DbSet<Stock> Stocks { get; set; }
+    public DbSet<Transaction> Transactions { get; set; }
+    #endregion
 
     public DbContext(IConfiguration config)
     {
-        _config = config;
+        // Get configuration properties
+        _areas = config.GetSection("App:Areas").Get<string[]>();
+        _connectionString = config["Db:ConnectionString"];
     }
 
     protected override void OnConfiguring(DbContextOptionsBuilder builder)
     {
-        builder.UseSqlite(_config["Db:ConnectionString"]);
+        builder.UseSqlite(_connectionString);
     }
 
     protected override void OnModelCreating(ModelBuilder builder)
     {
-        builder.Entity<Role>(etb =>
-        {
-            etb.HasKey(r => r.Id);
-            etb.Property(r => r.ConcurrencyStamp).IsConcurrencyToken();
-        });
-
-        builder.Entity<RoleClaim>(etb =>
-        {
-            etb.HasKey(rc => rc.Id);
-        });
-
-        builder.Entity<User>(etb =>
-        {
-            etb.HasKey(u => u.Id);
-            etb.Property(u => u.ConcurrencyStamp).IsConcurrencyToken();
-        });
-
-        builder.Entity<UserClaim>(etb =>
-        {
-            etb.HasKey(uc => uc.Id);
-        });
-
-        builder.Entity<UserLogin>(etb =>
-        {
-            etb.HasKey(ul => new { ul.LoginProvider, ul.ProviderKey });
-        });
-
-        builder.Entity<UserRole>(etb =>
-        {
-            etb.HasKey(ur => new { ur.UserId, ur.RoleId });
-        });
-
-        builder.Entity<UserToken>(etb =>
-        {
-            etb.HasKey(ut => new { ut.UserId, ut.LoginProvider, ut.Name });
-        });
+        if (_areas.Contains("Finance")) FinanceDbContext.OnModelCreating(builder);
+        if (_areas.Contains("Identity")) IdentityDbContext.OnModelCreating(builder);
     }
 }

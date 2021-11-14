@@ -190,6 +190,9 @@ Klik &lt;a href="{url}"&gt;hier&lt;/a&gt; om je e-mailadres te bevestigen.&lt;br
   <data name="Password" xml:space="preserve">
     <value>Wachtwoord</value>
   </data>
+  <data name="Portfolios" xml:space="preserve">
+    <value>Portfolio's</value>
+  </data>
   <data name="ResendLink" xml:space="preserve">
     <value>Link opnieuw sturen</value>
   </data>

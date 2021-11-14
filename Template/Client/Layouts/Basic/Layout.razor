@@ -1,0 +1,28 @@
+﻿@using Template.Client.Areas.Identity.Pages
+@inherits LayoutComponentBase
+
+<div id="wrapper">
+    <div id="header">
+        <div class="container">
+            <p id="logo">@Config["App:Name"]</p>
+            <NavMenu />
+        </div>
+    </div>
+
+    <main class="container">
+        @Body
+    </main>
+</div>
+
+<div id="footer" class="container">
+    <p>&copy; @Config["App:Name"]</p>
+    <CultureForm />
+</div>
+
+<div id="alerts">
+    <AuthorizeView>
+        <Authorized>
+            <EmailConfirmationAlert />
+        </Authorized>
+    </AuthorizeView>
+</div>

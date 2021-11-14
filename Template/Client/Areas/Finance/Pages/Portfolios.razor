@@ -1,0 +1,13 @@
+﻿@page "/portfolios"
+@attribute [Authorize]
+
+<div class="box">
+    <h1>@Localizer["Portfolios"]</h1>
+
+    <select value="@CurrentPortfolio" @onchange="SetPortfolio">
+        @foreach (var portfolio in AvailablePortfolios)
+        {
+            <option value="@portfolio.Id">@portfolio.Name</option>
+        }
+    </select>
+</div>

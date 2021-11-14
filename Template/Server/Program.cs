@@ -1,4 +1,6 @@
-using Blankendaal.Template.Server.Extensions;
+using Template.Server.Areas.Finance.Extensions;
+using Template.Server.Areas.Identity.Extensions;
+using Template.Server.Areas.Localization.Extensions;
 using Template.Server.Extensions;
 using Template.Server.Services;
 
@@ -7,23 +9,22 @@ var config = builder.Configuration;
 
 builder.Host.AddConfiguration("appsettings.json");
 
+var areas = config.GetSection("App:Areas").Get<string[]>();
+
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<DbContext>();
 builder.Services.AddScoped<IEmailSender, EmailSender>();
-
-builder.Services.AddLocalization(
-    config.GetSection("App:Cultures").Get<string[]>(),
-    config["App:DefaultCulture"],
-    config["App:CookieNames:Culture"]);
-
 builder.Services.AddRazorPages();
-builder.Services.AddUserService();
+
+if (areas.Contains("Finance")) builder.Services.AddFinance();
+if (areas.Contains("Identity")) builder.Services.AddIdentity(config);
+if (areas.Contains("Localization")) builder.Services.AddLocalization(config);
 
 var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
 {
-    app.UseDbContext(config.GetValue<bool>("Db:Recreate"));
+    app.UseDbContext(config);
     app.UseDeveloperExceptionPage();
     app.UseWebAssemblyDebugging();
 }
@@ -34,11 +35,15 @@ else
 }
 
 app.UseHttpsRedirection();
-app.UseLocalization();
+
+if (areas.Contains("Localization")) app.UseLocalization();
+
 app.UseBlazorFrameworkFiles();
 app.UseStaticFiles();
 app.UseRouting();
-app.UseAuthentication();
+
+if (areas.Contains("Identity")) app.UseAuthentication();
+
 app.UseAuthorization();
 
 app.MapRazorPages();

@@ -1,0 +1,7 @@
+﻿@if (!User.EmailConfirmed)
+{
+    <div class="alert">
+        <p>@((MarkupString)Localizer["AConfirmationLinkHasBeenSentToEmail"].Replace("{email}", User.Email))</p>
+        <button class="a margin-1" @onclick="ResendEmailConfirmationUrl">@Localizer["ResendLink"]</button>
+    </div>
+}

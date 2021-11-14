@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
 using System.Globalization;
-using Template.Client.Services;
-using Template.Shared.Parameters;
+using Template.Client.Areas.Localization.Services;
+using Template.Shared.Areas.Localization.Parameters;
 
 namespace Template.Client;
 
@@ -36,15 +36,15 @@ public partial class App
     {
         var name = args.Value.ToString();
 
-        // Set culture on client
+        // Set culture in the Client
         Culture = new CultureInfo(name);
 
-        // Pass culture name to server
+        // Pass culture name to the Server
         await CultureApi.SetCulture(new CultureFormParameters { CultureName = name });
     }
 
     protected override void OnInitialized()
     {
-        Cultures = Array.ConvertAll(Config.GetSection("App:Cultures").Get<string[]>(), c => new CultureInfo(c));
+        Cultures = Array.ConvertAll(Config.GetSection("Areas:Localization:Cultures").Get<string[]>(), c => new CultureInfo(c));
     }
 }
