@@ -1,10 +1,11 @@
 ﻿using Template.Shared.Areas.Finance.Models;
+using Template.Shared.Areas.Identity.Models;
 
 namespace Template.Client.Areas.Finance.Services;
 
 public interface IPortfolioService
 {
-    public Task<Portfolio[]> GetPortfolios();
+    public Task<Portfolio[]> GetPortfolios(User user);
 }
 
 public class PortfolioService : IPortfolioService
@@ -16,8 +17,8 @@ public class PortfolioService : IPortfolioService
         _portfolioApi = portfolioApi;
     }
 
-    public async Task<Portfolio[]> GetPortfolios()
+    public async Task<Portfolio[]> GetPortfolios(User user)
     {
-        return await _portfolioApi.GetPortfolios();
+        return await _portfolioApi.GetPortfolios(user);
     }
 }

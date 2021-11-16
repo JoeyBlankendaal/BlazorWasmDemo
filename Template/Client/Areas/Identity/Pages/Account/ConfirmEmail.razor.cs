@@ -7,8 +7,8 @@ namespace Template.Client.Areas.Identity.Pages.Account;
 
 public partial class ConfirmEmail
 {
-    public AccountConfirmEmailParameters Parameters = new();
-    public Result Result { get; set; }
+    private AccountConfirmEmailParameters Parameters = new();
+    private Result Result { get; set; }
 
     [Inject]
     public NavigationManager NavManager { get; set; }

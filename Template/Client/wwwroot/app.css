@@ -26,19 +26,13 @@ button {
     padding: 12px 24px;
 }
 
-/* Mimics an anchor */
-button.a {
-    background: 0;
-    border-radius: 0;
-    color: #005ca2;
-    padding: 0;
-}
-
-input, select {
-    border: 1px solid #ccc;
-    outline: none;
-    padding: 12px;
-}
+    /* Mimics an anchor */
+    button.a {
+        background: 0;
+        border-radius: 0;
+        color: #005ca2;
+        padding: 0;
+    }
 
 hr {
     background: #ccc;
@@ -47,13 +41,34 @@ hr {
     margin-bottom: 16px;
 }
 
+input, select {
+    border: 1px solid #ccc;
+    outline: none;
+    padding: 12px;
+}
+
+    input[type="checkbox"] {
+        margin-right: 2px;
+        width: auto;
+    }
+
 label {
     display: block;
 }
 
 /* Classes: */
+form.horizontal {
+    align-items: center;
+    display: flex;
+    gap: 16px;
+}
+
 .green-text {
     color: #10b981;
+}
+
+.grey-text {
+    color: #888;
 }
 
 .red-text {
@@ -245,6 +260,26 @@ form {
     form input {
         margin: 8px 0;
         width: 100%;
+    }
+
+table {
+    border-collapse: collapse;
+    margin-top: 16px;
+    width: 100%;
+}
+
+    table th {
+        background: #005ca2;
+        border: 1px solid #005ca2;
+        color: #fff;
+        font-weight: normal;
+        text-align: left;
+        padding: 8px 12px;
+    }
+
+    table td {
+        border: 1px solid #ccc;
+        padding: 8px 12px;
     }
 
 #footer {

@@ -6,14 +6,15 @@ public static class WebApplicationExtensions
 {
     public static void UseDbContext(this WebApplication app, IConfiguration config)
     {
-        // Get configuration property
-        var recreate = config.GetValue<bool>("Db:Recreate");
+        // Get configuration properties
+        var database = config["App:Database"];
+        var recreateOnRun = config.GetValue<bool>($"Database:{database}:RecreateOnRun");
 
         // Get DbContext service
         using var services = app.Services.GetRequiredService<IServiceScopeFactory>().CreateScope();
         var db = services.ServiceProvider.GetService<DbContext>();
 
-        if (recreate)
+        if (recreateOnRun)
         {
             db.Database.EnsureDeleted();
         }

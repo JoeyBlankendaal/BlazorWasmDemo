@@ -7,8 +7,8 @@ namespace Template.Client.Areas.Identity.Pages.Account;
 
 public partial class Create
 {
-    public AccountCreateParameters Parameters = new();
-    public Result Result { get; set; }
+    private AccountCreateParameters Parameters = new();
+    private Result Result { get; set; }
 
     [Inject]
     public NavigationManager NavManager { get; set; }
@@ -16,7 +16,7 @@ public partial class Create
     [Inject]
     public UserService UserService { get; set; }
 
-    public async Task OnValidSubmit()
+    private async Task OnValidSubmit()
     {
         try
         {

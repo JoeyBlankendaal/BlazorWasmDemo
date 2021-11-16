@@ -1,11 +1,12 @@
 ﻿using System.Net.Http.Json;
 using Template.Shared.Areas.Finance.Models;
+using Template.Shared.Areas.Identity.Models;
 
 namespace Template.Client.Areas.Finance.Services;
 
 public interface IPortfolioApi
 {
-    public Task<Portfolio[]> GetPortfolios();
+    public Task<Portfolio[]> GetPortfolios(User user);
 }
 
 public class PortfolioApi : IPortfolioApi
@@ -17,8 +18,8 @@ public class PortfolioApi : IPortfolioApi
         _http = http;
     }
 
-    public async Task<Portfolio[]> GetPortfolios()
+    public async Task<Portfolio[]> GetPortfolios(User user)
     {
-        return await _http.GetFromJsonAsync<Portfolio[]>("api/portfolios");
+        return await _http.GetFromJsonAsync<Portfolio[]>("api/portfolios?user=" + user.Id);
     }
 }

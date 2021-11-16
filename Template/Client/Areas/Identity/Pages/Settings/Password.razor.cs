@@ -7,8 +7,8 @@ namespace Template.Client.Areas.Identity.Pages.Settings;
 
 public partial class Password
 {
-    public SettingsPasswordParameters Parameters = new();
-    public Result Result { get; set; }
+    private SettingsPasswordParameters Parameters = new();
+    private Result Result { get; set; }
 
     [Inject]
     public NavigationManager NavManager { get; set; }
@@ -16,7 +16,7 @@ public partial class Password
     [Inject]
     public UserService UserService { get; set; }
 
-    public async Task OnValidSubmit()
+    private async Task OnValidSubmit()
     {
         try
         {

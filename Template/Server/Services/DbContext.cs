@@ -12,32 +12,43 @@ public class DbContext :
     IFinanceDbContext,
     IIdentityDbContext
 {
-    private readonly string[] _areas;
-    private readonly string _connectionString;
+    private readonly IConfiguration _config;
 
     #region Finance
-    public DbSet<Cryptocurrency> Cryptocurrencies { get; set; }
-    public DbSet<Currency> Currencies { get; set; }
+    public DbSet<Asset> Assets { get; set; }
     public DbSet<Portfolio> Portfolios { get; set; }
-    public DbSet<Stock> Stocks { get; set; }
     public DbSet<Transaction> Transactions { get; set; }
     #endregion
 
     public DbContext(IConfiguration config)
     {
-        // Get configuration properties
-        _areas = config.GetSection("App:Areas").Get<string[]>();
-        _connectionString = config["Db:ConnectionString"];
+        _config = config;
     }
 
     protected override void OnConfiguring(DbContextOptionsBuilder builder)
     {
-        builder.UseSqlite(_connectionString);
+        // Get configuration properties
+        var database = _config["App:Database"];
+        var dbms = _config[$"Databases:{database}:DBMS"];
+        var connectionString = _config[$"Databases:{database}:ConnectionString"];
+
+        // Configure the context to connect to a database with a configured type
+        switch (dbms)
+        {
+            case "MySQL":
+                builder.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
+                break;
+            case "SQLite":
+                builder.UseSqlite(connectionString);
+                break;
+        }
     }
 
     protected override void OnModelCreating(ModelBuilder builder)
     {
-        if (_areas.Contains("Finance")) FinanceDbContext.OnModelCreating(builder);
-        if (_areas.Contains("Identity")) IdentityDbContext.OnModelCreating(builder);
+        var areas = _config.GetSection("App:Areas").Get<string[]>();
+
+        if (areas.Contains("Finance")) FinanceDbContext.OnModelCreating(builder);
+        if (areas.Contains("Identity")) IdentityDbContext.OnModelCreating(builder);
     }
 }

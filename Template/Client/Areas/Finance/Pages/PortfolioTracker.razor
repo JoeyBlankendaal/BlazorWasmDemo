@@ -1,0 +1,83 @@
+﻿@page "/portfolio-tracker"
+@attribute [Authorize]
+
+@using Template.Shared.Areas.Finance.Models
+
+@if (Portfolios == null)
+{
+    <div class="spinner"></div>
+}
+else
+{
+    <div class="box">
+        <h1>@Localizer["Portfolios"]</h1>
+
+        <form class="horizontal">
+            <select value="@CurrentPortfolio.Id" @onchange="SetPortfolio">
+                @foreach (var portfolio in Portfolios)
+                {
+                    <option value="@portfolio.Id">@portfolio.Name</option>
+                }
+            </select>
+            
+            @foreach (var type in AssetTypes)
+            {
+                <label for="@type.Key">
+                    <input name="@type.Key" type="checkbox" disabled="disabled" @bind="AssetTypes[type.Key]">
+                    <span>@Localizer[@type.Key.ToString()]</span>
+                </label>
+            }
+        </form>
+        
+        @if (CurrentPortfolio.DisplayedAssets.Length == 0)
+        {
+            <p class="red-text">@Localizer["ThisPortfolioDoesntContainAnyAssetsYet"]</p>
+        }
+        else
+        {
+            <table>
+                <thead>
+                    <tr>
+                        <th>@Localizer["Name"]</th>
+                        <th>@Localizer["Price"]</th>
+                        <th>@Localizer["Holdings"]</th>
+                        <th>@Localizer["BuyPrice"]</th>
+                        <th>@Localizer["ProfitSlashLoss"]</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @foreach (var asset in CurrentPortfolio.DisplayedAssets)
+                    {
+                        <tr>
+                            <td>@asset.Name <span class="grey-text">@asset.Symbol</span></td>
+                            <td>$@asset.Price.ToString("N2")</td>
+
+                            <td>
+                                $@asset.HoldingsValue.ToString("N2")<br>
+                                <span class="grey-text">@asset.HoldingsQuantity.ToString("N0") @asset.Symbol</span>
+                            </td>
+
+                            <td>$@asset.AverageBuyPrice.ToString("N2")</td>
+
+                            @if (asset.ProfitOrLossValue >= 0)
+                            {
+                                <td>
+                                    + $@asset.ProfitOrLossValue.ToString("N2")<br>
+                                    <span class="green-text">&#x25B2; @asset.ProfitOrLossPercentage.ToString("N2")%</span>
+                                </td>
+                            }
+                            else
+                            {
+                                <td>
+                                    - $@asset.ProfitOrLossValue.ToString("N2")<br>
+                                    <span class="red-text">&#x25BC; @asset.ProfitOrLossPercentage.ToString("N2")%</span>
+                                </td>
+                            }
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+    </div>
+}

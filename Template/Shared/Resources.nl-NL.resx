@@ -123,6 +123,9 @@
   <data name="AConfirmationLinkHasBeenSentToEmail" xml:space="preserve">
     <value>Een bevestigingslink is gestuurd naar &lt;strong&gt;{email}&lt;/strong&gt;.</value>
   </data>
+  <data name="BuyPrice" xml:space="preserve">
+    <value>Koopprijs</value>
+  </data>
   <data name="ChangeYourPassword" xml:space="preserve">
     <value>Wachtwoord veranderen</value>
   </data>
@@ -141,6 +144,12 @@ Klik &lt;a href="{url}"&gt;hier&lt;/a&gt; om je e-mailadres te bevestigen.&lt;br
   </data>
   <data name="CreateYourAccount" xml:space="preserve">
     <value>Account aanmaken</value>
+  </data>
+  <data name="Cryptocurrencies" xml:space="preserve">
+    <value>Cryptovaluta's</value>
+  </data>
+  <data name="Cryptocurrency" xml:space="preserve">
+    <value>Cryptovaluta</value>
   </data>
   <data name="CurrentPassword" xml:space="preserve">
     <value>Huidig wachtwoord</value>
@@ -166,6 +175,9 @@ Klik &lt;a href="{url}"&gt;hier&lt;/a&gt; om je e-mailadres te bevestigen.&lt;br
   <data name="Error404" xml:space="preserve">
     <value>Error 404</value>
   </data>
+  <data name="Holdings" xml:space="preserve">
+    <value>Bezit</value>
+  </data>
   <data name="Home" xml:space="preserve">
     <value>Home</value>
   </data>
@@ -174,6 +186,9 @@ Klik &lt;a href="{url}"&gt;hier&lt;/a&gt; om je e-mailadres te bevestigen.&lt;br
   </data>
   <data name="LogOut" xml:space="preserve">
     <value>Uitloggen</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Naam</value>
   </data>
   <data name="NewPassword" xml:space="preserve">
     <value>Nieuw wachtwoord</value>
@@ -193,6 +208,15 @@ Klik &lt;a href="{url}"&gt;hier&lt;/a&gt; om je e-mailadres te bevestigen.&lt;br
   <data name="Portfolios" xml:space="preserve">
     <value>Portfolio's</value>
   </data>
+  <data name="PortfolioTracker" xml:space="preserve">
+    <value>Portfolio tracker</value>
+  </data>
+  <data name="Price" xml:space="preserve">
+    <value>Prijs</value>
+  </data>
+  <data name="ProfitSlashLoss" xml:space="preserve">
+    <value>Winst/Verlies</value>
+  </data>
   <data name="ResendLink" xml:space="preserve">
     <value>Link opnieuw sturen</value>
   </data>
@@ -204,6 +228,15 @@ Klik &lt;a href="{url}"&gt;hier&lt;/a&gt; om je e-mailadres te bevestigen.&lt;br
   </data>
   <data name="SignUp" xml:space="preserve">
     <value>Aanmelden</value>
+  </data>
+  <data name="Stock" xml:space="preserve">
+    <value>Aandeel</value>
+  </data>
+  <data name="Stocks" xml:space="preserve">
+    <value>Aandelen</value>
+  </data>
+  <data name="ThisPortfolioDoesntContainAnyAssetsYet" xml:space="preserve">
+    <value>Deze portfolio bevat nog geen activa.</value>
   </data>
   <data name="ThisUserDoesNotExist" xml:space="preserve">
     <value>Deze gebruiker bestaat niet.</value>

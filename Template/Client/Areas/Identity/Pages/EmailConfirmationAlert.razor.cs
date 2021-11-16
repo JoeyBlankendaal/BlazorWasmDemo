@@ -7,8 +7,8 @@ namespace Template.Client.Areas.Identity.Pages;
 
 public partial class EmailConfirmationAlert
 {
-    public ResendEmailConfirmationUrlParameters Parameters = new();
-    public User User { get; set; }
+    private ResendEmailConfirmationUrlParameters Parameters = new();
+    private User User { get; set; }
 
     [Inject]
     public UserService UserService { get; set; }
@@ -18,7 +18,7 @@ public partial class EmailConfirmationAlert
         User = UserService.GetCurrentUser();
     }
 
-    public async Task ResendEmailConfirmationUrl()
+    private async Task ResendEmailConfirmationUrl()
     {
         await UserService.ResendEmailConfirmationUrl(Parameters);
     }
