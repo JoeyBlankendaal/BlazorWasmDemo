@@ -7,6 +7,7 @@ namespace Template.Client.Areas.Identity.Pages.Account;
 
 public partial class Create
 {
+    private bool Loading = false;
     private AccountCreateParameters Parameters = new();
     private Result Result { get; set; }
 
@@ -18,6 +19,8 @@ public partial class Create
 
     private async Task OnValidSubmit()
     {
+        Loading = true;
+
         try
         {
             await UserService.Create(Parameters);
@@ -25,6 +28,8 @@ public partial class Create
         }
         catch (Exception ex)
         {
+            Loading = false;
+
             Result = new Result
             {
                 HasSucceeded = false,

@@ -7,6 +7,7 @@ namespace Template.Client.Areas.Identity.Pages.Account;
 
 public partial class LogIn
 {
+    private bool Loading = false;
     private AccountLogInParameters Parameters = new();
     private Result Result { get; set; }
 
@@ -18,6 +19,8 @@ public partial class LogIn
 
     private async Task OnValidSubmit()
     {
+        Loading = true;
+
         try
         {
             await UserService.LogIn(Parameters);
@@ -25,6 +28,8 @@ public partial class LogIn
         }
         catch (Exception ex)
         {
+            Loading = false;
+
             Result = new Result
             {
                 HasSucceeded = false,

@@ -8,7 +8,7 @@ public static class WebApplicationExtensions
     {
         // Get configuration properties
         var database = config["App:Database"];
-        var recreateOnRun = config.GetValue<bool>($"Database:{database}:RecreateOnRun");
+        var recreateOnRun = config.GetValue<bool>($"Databases:{database}:RecreateOnRun");
 
         // Get DbContext service
         using var services = app.Services.GetRequiredService<IServiceScopeFactory>().CreateScope();

@@ -7,6 +7,7 @@ namespace Template.Client.Areas.Identity.Pages.Settings;
 
 public partial class Password
 {
+    private bool Loading = false;
     private SettingsPasswordParameters Parameters = new();
     private Result Result { get; set; }
 
@@ -18,18 +19,23 @@ public partial class Password
 
     private async Task OnValidSubmit()
     {
+        Loading = true;
+
         try
         {
             await UserService.SetPassword(Parameters);
+            Loading = false;
 
             Result = new Result
             {
                 HasSucceeded = true,
-                Messages = new[] { "YourPasswordHasBeenChanged" }
+                Messages = new[] { Localizer["YourPasswordHasBeenChanged"] }
             };
         }
         catch (Exception ex)
         {
+            Loading = false;
+
             Result = new Result
             {
                 HasSucceeded = false,

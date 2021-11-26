@@ -24,8 +24,15 @@
                     <ValidationMessage For="@(() => Parameters.Password)" />
                 </p>
             </div>
-
-            <button>@Localizer["Next"]</button>
+            
+            @if (!Loading)
+            {
+                <button>@Localizer["Next"]</button>
+            }
+            else
+            {
+                <div class="spinner"></div>
+            }
         </EditForm>
             
         @if (Result != null)
