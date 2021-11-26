@@ -13,4 +13,10 @@ public class Portfolio
 
     [NotMapped]
     public Asset[] DisplayedAssets { get; set; }
+
+    [NotMapped]
+    public double ProfitOrLossPercentage { get; set; }
+
+    [NotMapped]
+    public double ProfitOrLossValue { get; set; }
 }

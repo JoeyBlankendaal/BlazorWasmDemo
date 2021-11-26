@@ -57,6 +57,10 @@ label {
 }
 
 /* Classes: */
+.big {
+    font-size: 24px;
+}
+
 form.horizontal {
     align-items: center;
     display: flex;
@@ -317,3 +321,23 @@ table {
     .alert > p {
         margin: 0;
     }
+
+/* Charts: */
+.line-chart {
+    table-layout: fixed;
+}
+
+.x-axis-labels > td {
+    border: 0;
+    padding-right: 0;
+    text-align: right;
+}
+
+.y-axis-label {
+    border-bottom: 0;
+    border-left: 0;
+    border-top: 0;
+    padding-top: 0;
+    text-align: right;
+    width: 48px;
+}

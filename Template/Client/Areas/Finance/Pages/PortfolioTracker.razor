@@ -10,7 +10,7 @@
 else
 {
     <div class="box">
-        <h1>@Localizer["Portfolios"]</h1>
+        <h1>@Localizer["PortfolioTracker"]</h1>
 
         <form class="horizontal">
             <select value="@CurrentPortfolio.Id" @onchange="SetPortfolio">
@@ -28,13 +28,28 @@ else
                 </label>
             }
         </form>
-        
+
         @if (CurrentPortfolio.DisplayedAssets.Length == 0)
         {
             <p class="red-text">@Localizer["ThisPortfolioDoesntContainAnyAssetsYet"]</p>
         }
         else
         {
+            if (CurrentPortfolio.ProfitOrLossValue >= 0)
+            {
+                <p class="big">
+                    + $@CurrentPortfolio.ProfitOrLossValue.ToString("N2")<br>
+                    <span class="green-text">&#x25B2; @CurrentPortfolio.ProfitOrLossPercentage.ToString("N2")%</span>
+                </p>
+            }
+            else
+            {
+                <p class="big">
+                    - $@CurrentPortfolio.ProfitOrLossValue.ToString("N2")<br>
+                    <span class="red-text">&#x25BC; @CurrentPortfolio.ProfitOrLossPercentage.ToString("N2")%</span>
+                </p>
+            }
+
             <table>
                 <thead>
                     <tr>

@@ -47,6 +47,10 @@ public class PortfolioService : IPortfolioService
                 portfolioAssets.Add(asset);
             }
 
+            // Start tracking portfolio profit/loss
+            var averageBuyValue = 0.0;
+            var profitOrLossValue = 0.0;
+
             // Iterate through portfolio assets to get portfolio transactions
             foreach (var asset in portfolioAssets)
             {
@@ -58,9 +62,19 @@ public class PortfolioService : IPortfolioService
                 asset.HoldingsValue = GetHoldingsValue(asset); // Requires HoldingsQuantity
                 asset.ProfitOrLossValue = GetProfitOrLossValue(asset);
                 asset.ProfitOrLossPercentage = GetProfitOrLossPercentage(asset); // Requires ProfitsOrLossValue, HoldingsQuantity, and AverageBuyPrice
+
+                averageBuyValue += asset.HoldingsQuantity * asset.AverageBuyPrice;
+                profitOrLossValue += asset.ProfitOrLossValue;
             }
 
             portfolio.Assets = portfolioAssets.ToArray();
+
+            // Calculate portfolio profit/loss
+            portfolio.ProfitOrLossValue = profitOrLossValue;
+
+            portfolio.ProfitOrLossPercentage = profitOrLossValue != 0 && averageBuyValue != 0
+                ? (profitOrLossValue / averageBuyValue * 100) - 100
+                : 0;
         }
 
         return portfolios;
