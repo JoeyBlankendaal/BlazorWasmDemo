@@ -199,6 +199,9 @@ Click &lt;a href="{url}"&gt;here&lt;/a&gt; to confirm your email address.&lt;br&
   <data name="nl-NL" xml:space="preserve">
     <value>Nederlands (Nederland)</value>
   </data>
+  <data name="NoPortfoliosHaveBeenCreatedYet" xml:space="preserve">
+    <value>No portfolios have been created yet.</value>
+  </data>
   <data name="PageNotFound" xml:space="preserve">
     <value>Page not found.</value>
   </data>

@@ -199,6 +199,9 @@ Klik &lt;a href="{url}"&gt;hier&lt;/a&gt; om je e-mailadres te bevestigen.&lt;br
   <data name="nl-NL" xml:space="preserve">
     <value>Nederlands (Nederland)</value>
   </data>
+  <data name="NoPortfoliosHaveBeenCreatedYet" xml:space="preserve">
+    <value>Er zijn nog geen portfolio's aangemaakt.</value>
+  </data>
   <data name="PageNotFound" xml:space="preserve">
     <value>Pagina niet gevonden.</value>
   </data>

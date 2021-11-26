@@ -32,7 +32,10 @@ public partial class PortfolioTracker
             portfolio.DisplayedAssets = portfolio.Assets;
         }
 
-        SetPortfolio(Portfolios.FirstOrDefault().Id);
+        if (Portfolios.Any())
+        {
+            SetPortfolio(Portfolios.FirstOrDefault().Id);
+        }
     }
 
     private void SetPortfolio(ChangeEventArgs args)
