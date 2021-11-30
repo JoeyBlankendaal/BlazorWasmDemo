@@ -1,50 +1,6 @@
-﻿using Microsoft.AspNetCore.Components;
-using Microsoft.JSInterop;
-using System.Globalization;
-using Template.Client.Areas.Localization.Services;
-using Template.Shared.Areas.Localization.Parameters;
-
-namespace Template.Client;
+﻿namespace Template.Client;
 
 public partial class App
 {
-    [Inject]
-    public ICultureApi CultureApi { get; set; }
 
-    [Inject]
-    public IJSRuntime JS { get; set; }
-
-    [Inject]
-    public NavigationManager NavManager { get; set; }
-
-    public CultureInfo[] Cultures { get; set; }
-
-    public CultureInfo Culture
-    {
-        get => CultureInfo.CurrentCulture;
-        set
-        {
-            if (CultureInfo.CurrentCulture != value)
-            {
-                ((IJSInProcessRuntime)JS).InvokeVoid("blazorCulture.set", value.Name);
-                NavManager.NavigateTo(NavManager.Uri, forceLoad: true);
-            }
-        }
-    }
-
-    public async Task SetCulture(ChangeEventArgs args)
-    {
-        var name = args.Value.ToString();
-
-        // Set culture in the Client
-        Culture = new CultureInfo(name);
-
-        // Pass culture name to the Server
-        await CultureApi.SetCulture(new CultureFormParameters { CultureName = name });
-    }
-
-    protected override void OnInitialized()
-    {
-        Cultures = Array.ConvertAll(Config.GetSection("Areas:Localization:Cultures").Get<string[]>(), c => new CultureInfo(c));
-    }
 }

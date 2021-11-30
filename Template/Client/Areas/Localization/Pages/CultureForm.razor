@@ -1,5 +1,5 @@
-﻿<select value="@App.Culture" @onchange="App.SetCulture">
-    @foreach (var culture in App.Cultures.OrderBy(c => Localizer[c.Name]))
+﻿<select value="@CultureService.GetCurrentCulture()" @onchange="CultureService.SetCurrentCulture">
+    @foreach (var culture in CultureService.GetSupportedCultures().OrderBy(c => Localizer[c.Name]))
     {
         <option value="@culture">@Localizer[culture.Name]</option>
     }
