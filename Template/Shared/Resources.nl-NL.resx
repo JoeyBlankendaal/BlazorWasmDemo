@@ -123,6 +123,9 @@
   <data name="AConfirmationLinkHasBeenSentToEmail" xml:space="preserve">
     <value>Een bevestigingslink is gestuurd naar &lt;strong&gt;{email}&lt;/strong&gt;.</value>
   </data>
+  <data name="ANewLinkHasBeenSent" xml:space="preserve">
+    <value>Een nieuwe link is gestuurd.</value>
+  </data>
   <data name="BuyPrice" xml:space="preserve">
     <value>Koopprijs</value>
   </data>
@@ -220,8 +223,8 @@ Klik &lt;a href="{url}"&gt;hier&lt;/a&gt; om je e-mailadres te bevestigen.&lt;br
   <data name="ProfitSlashLoss" xml:space="preserve">
     <value>Winst/Verlies</value>
   </data>
-  <data name="ResendLink" xml:space="preserve">
-    <value>Link opnieuw sturen</value>
+  <data name="ResendNewLink" xml:space="preserve">
+    <value>Nieuwe link sturen</value>
   </data>
   <data name="Save" xml:space="preserve">
     <value>Opslaan</value>

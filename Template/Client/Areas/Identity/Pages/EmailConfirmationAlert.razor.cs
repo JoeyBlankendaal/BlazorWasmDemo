@@ -5,9 +5,17 @@ using Template.Shared.Areas.Identity.Parameters;
 
 namespace Template.Client.Areas.Identity.Pages;
 
+public enum State
+{
+    Unsubmitted,
+    Loading,
+    Submitted
+}
+
 public partial class EmailConfirmationAlert
 {
     private readonly ResendEmailConfirmationUrlParameters Parameters = new();
+    private State State = State.Unsubmitted;
     private User User;
 
     [Inject] private UserService UserService { get; set; }
@@ -20,6 +28,8 @@ public partial class EmailConfirmationAlert
 
     private async Task ResendEmailConfirmationUrl()
     {
+        State = State.Loading;
         await UserService.ResendEmailConfirmationUrl(Parameters);
+        State = State.Submitted;
     }
 }

@@ -2,6 +2,20 @@
 {
     <div class="alert">
         <p>@((MarkupString)Localizer["AConfirmationLinkHasBeenSentToEmail"].Replace("{email}", User.Email))</p>
-        <button class="a margin-1" @onclick="ResendEmailConfirmationUrl">@Localizer["ResendLink"]</button>
+
+        <div class="margin-1">
+            @if (State == State.Unsubmitted)
+            {
+                <button class="a" @onclick="ResendEmailConfirmationUrl">@Localizer["ResendNewLink"]</button>
+            }
+            else if (State == State.Loading)
+            {
+                <div class="spinner"></div>
+            }
+            else if (State == State.Submitted)
+            {
+                <p class="green-text">@Localizer["ANewLinkHasBeenSent"]</p>
+            }
+        </div>
     </div>
 }

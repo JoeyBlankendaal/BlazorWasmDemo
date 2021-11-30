@@ -123,6 +123,9 @@
   <data name="AConfirmationLinkHasBeenSentToEmail" xml:space="preserve">
     <value>A confirmation link has been sent to &lt;strong&gt;{email}&lt;/strong&gt;.</value>
   </data>
+  <data name="ANewLinkHasBeenSent" xml:space="preserve">
+    <value>A new link has been sent.</value>
+  </data>
   <data name="BuyPrice" xml:space="preserve">
     <value>Buy Price</value>
   </data>
@@ -220,8 +223,8 @@ Click &lt;a href="{url}"&gt;here&lt;/a&gt; to confirm your email address.&lt;br&
   <data name="ProfitSlashLoss" xml:space="preserve">
     <value>Profit/Loss</value>
   </data>
-  <data name="ResendLink" xml:space="preserve">
-    <value>Resend link</value>
+  <data name="ResendNewLink" xml:space="preserve">
+    <value>Resend new link</value>
   </data>
   <data name="Save" xml:space="preserve">
     <value>Save</value>
