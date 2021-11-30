@@ -8,21 +8,21 @@ namespace Template.Client.Areas.Identity.Pages.Settings;
 public partial class Password
 {
     private bool Loading = false;
-    private SettingsPasswordParameters Parameters = new();
-    private Result Result { get; set; }
+    private readonly SettingsPasswordParameters Parameters = new();
+    private Result Result;
 
-    [Inject]
-    public NavigationManager NavManager { get; set; }
+    [Inject] private UserService UserService { get; set; }
 
-    [Inject]
-    public UserService UserService { get; set; }
+    protected override void OnInitialized()
+    {
+        Parameters.UserId = UserService.GetCurrentUser().Id.ToString();
+    }
 
     private async Task OnValidSubmit()
     {
-        Loading = true;
-
         try
         {
+            Loading = true;
             await UserService.SetPassword(Parameters);
             Loading = false;
 

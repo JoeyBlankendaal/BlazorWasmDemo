@@ -27,7 +27,7 @@ public class UserController : ControllerBase
     [HttpPost("confirm-email")]
     public async Task<IActionResult> ConfirmEmail(AccountConfirmEmailParameters parameters)
     {
-        var user = await _userService.GetUserById(parameters.Id);
+        var user = await _userService.GetUserById(parameters.UserId);
 
         if (user == null)
         {
@@ -145,7 +145,7 @@ public class UserController : ControllerBase
     [HttpPut("password")]
     public async Task<IActionResult> SetPassword(SettingsPasswordParameters parameters)
     {
-        var user = await _userService.GetCurrentUser(User);
+        var user = await _userService.GetUserById(parameters.UserId);
 
         if (user == null)
         {

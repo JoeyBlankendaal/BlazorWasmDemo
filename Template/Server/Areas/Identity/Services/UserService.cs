@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Identity;
-using System.Security.Claims;
 using Template.Shared.Areas.Identity.Models;
 using Template.Shared.Models;
 
@@ -9,7 +8,6 @@ public interface IUserService
 {
     public Task<Result> ConfirmEmail(User user, string token);
     public Task<Result> Create(User user, string password);
-    public Task<User> GetCurrentUser(ClaimsPrincipal principal);
     public Task<User> GetUserByEmail(string email);
     public Task<User> GetUserById(string id);
     public Task<User> GetUserByUserName(string userName);
@@ -56,11 +54,6 @@ public class UserService : IUserService
     public async Task<string> GenerateEmailConfirmationToken(User user)
     {
         return await _userManager.GenerateEmailConfirmationTokenAsync(user);
-    }
-
-    public async Task<User> GetCurrentUser(ClaimsPrincipal principal)
-    {
-        return await _userManager.GetUserAsync(principal);
     }
 
     public async Task<User> GetUserByEmail(string email)

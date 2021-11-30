@@ -4,6 +4,8 @@ namespace Template.Shared.Areas.Identity.Parameters;
 
 public class SettingsPasswordParameters
 {
+    public string UserId { get; set; }
+
     [DataType(DataType.Password)]
     [Required(ErrorMessage = "EnterAPassword")]
     public string CurrentPassword { get; set; }

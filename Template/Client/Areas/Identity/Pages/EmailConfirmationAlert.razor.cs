@@ -7,15 +7,15 @@ namespace Template.Client.Areas.Identity.Pages;
 
 public partial class EmailConfirmationAlert
 {
-    private ResendEmailConfirmationUrlParameters Parameters = new();
-    private User User { get; set; }
+    private readonly ResendEmailConfirmationUrlParameters Parameters = new();
+    private User User;
 
-    [Inject]
-    public UserService UserService { get; set; }
+    [Inject] private UserService UserService { get; set; }
 
     protected override void OnInitialized()
     {
         User = UserService.GetCurrentUser();
+        Parameters.UserId = User.Id.ToString();
     }
 
     private async Task ResendEmailConfirmationUrl()

@@ -5,13 +5,10 @@ namespace Template.Client.Layouts.Basic;
 
 public partial class NavMenu
 {
-    [Inject]
-    public NavigationManager NavManager { get; set; }
+    [Inject] private NavigationManager NavManager { get; set; }
+    [Inject] private UserService UserService { get; set; }
 
-    [Inject]
-    public UserService UserService { get; set; }
-
-    public async Task LogOut()
+    protected async Task LogOut()
     {
         await UserService.LogOut();
         NavManager.NavigateTo("");

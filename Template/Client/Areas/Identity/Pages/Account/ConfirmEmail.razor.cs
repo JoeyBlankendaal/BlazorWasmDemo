@@ -7,26 +7,20 @@ namespace Template.Client.Areas.Identity.Pages.Account;
 
 public partial class ConfirmEmail
 {
-    private AccountConfirmEmailParameters Parameters = new();
-    private Result Result { get; set; }
+    private readonly AccountConfirmEmailParameters Parameters = new();
+    private Result Result;
 
-    [Inject]
-    public NavigationManager NavManager { get; set; }
+    [Inject] private NavigationManager NavManager { get; set; }
+    [Inject] private UserService UserService { get; set; }
 
-    [Inject]
-    public UserService UserService { get; set; }
-
-    [Parameter]
-    public string Id { get; set; }
-
-    [Parameter]
-    public string Token { get; set; }
+    [Parameter] public string UserId { get; set; }
+    [Parameter] public string Token { get; set; }
 
     protected override async Task OnInitializedAsync()
     {
         try
         {
-            Parameters.Id = Id;
+            Parameters.UserId = UserId;
             Parameters.Token = Token;
 
             await UserService.ConfirmEmail(Parameters);

@@ -7,20 +7,17 @@ namespace Template.Client.Areas.Finance.Pages;
 
 public partial class PortfolioTracker
 {
-    private Portfolio CurrentPortfolio { get; set; }
-    private Portfolio[] Portfolios { get; set; }
+    private Portfolio CurrentPortfolio;
+    private Portfolio[] Portfolios;
 
-    [Inject]
-    public IPortfolioService PortfolioService { get; set; }
-
-    [Inject]
-    public UserService UserService { get; set; }
-
-    private Dictionary<AssetType, bool> AssetTypes = new()
+    private readonly Dictionary<AssetType, bool> AssetTypes = new()
     {
         [AssetType.Cryptocurrency] = true,
         [AssetType.Stock] = true
     };
+
+    [Inject] private IPortfolioService PortfolioService { get; set; }
+    [Inject] private UserService UserService { get; set; }
 
     protected override async Task OnInitializedAsync()
     {

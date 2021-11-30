@@ -8,21 +8,17 @@ namespace Template.Client.Areas.Identity.Pages.Account;
 public partial class LogIn
 {
     private bool Loading = false;
-    private AccountLogInParameters Parameters = new();
-    private Result Result { get; set; }
+    private readonly AccountLogInParameters Parameters = new();
+    private Result Result;
 
-    [Inject]
-    public NavigationManager NavManager { get; set; }
-
-    [Inject]
-    public UserService UserService { get; set; }
+    [Inject] private NavigationManager NavManager { get; set; }
+    [Inject] private UserService UserService { get; set; }
 
     private async Task OnValidSubmit()
     {
-        Loading = true;
-
         try
         {
+            Loading = true;
             await UserService.LogIn(Parameters);
             NavManager.NavigateTo("");
         }
