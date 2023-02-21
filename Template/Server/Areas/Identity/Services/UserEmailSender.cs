@@ -3,6 +3,7 @@ using System.Text;
 using Template.Server.Services;
 using Template.Shared.Areas.Identity.Models;
 using Template.Shared.Areas.Localization.Services;
+using Template.Shared.Extensions;
 
 namespace Template.Server.Areas.Identity.Services;
 
@@ -26,16 +27,16 @@ public class UserEmailSender : IUserEmailSender
 
     public void SendEmailConfirmationUrl(User user, string token)
     {
-        var url = $"{_config["App:Url"]}/account/confirm-email/{user.Id}/"
+        var url = $"{_config.GetAppUrl()}/account/confirm-email/{user.Id}/"
             + WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(token));
 
         var body = _localizer["ConfirmEmailEmailBody"]
             .Replace("{user}", user.UserName)
             .Replace("{url}", url)
-            .Replace("{app}", _config["App:Name"]);
+            .Replace("{app}", _config.GetAppName());
 
         _emailSender.Send(
-            _config["Smtp:Username"],
+            _config.GetSmtpUserName(),
             user.Email,
             _localizer["ConfirmYourEmail"],
             body);

@@ -2,9 +2,9 @@
 
 namespace Template.Server.Extensions;
 
-public static class ConfigureHostBuilderExtensions
+public static class ConfigurationManagerExtensions
 {
-    public static void AddConfiguration(this ConfigureHostBuilder builder, string path)
+    public static void AddConfiguration(this ConfigurationManager configManager, string path)
     {
         // Get Server project path
         var serverPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location).Split(@"bin\")[0];
@@ -24,10 +24,7 @@ public static class ConfigureHostBuilderExtensions
         }
 
         // Import Shared appsettings.json into Server appsettings.json
-        builder.ConfigureAppConfiguration((hostBuilder, config) =>
-        {
-            config.AddJsonFile(sharedPath, optional: false, reloadOnChange: true);
-        });
+        configManager.AddJsonFile(sharedPath, optional: false, reloadOnChange: true);
 
         // Import Shared appsettings.json into Client appsettings.json
         File.Copy(sharedPath, clientPath, overwrite: true);

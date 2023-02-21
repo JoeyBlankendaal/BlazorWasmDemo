@@ -27,10 +27,7 @@ public class UserService : AuthenticationStateProvider
         NotifyAuthenticationStateChanged(GetAuthenticationStateAsync());
     }
 
-    public User GetCurrentUser()
-    {
-        return _userInfo.CurrentUser;
-    }
+    public User GetCurrentUser() => _userInfo.CurrentUser;
 
     private async Task<UserInfo> GetUserInfo()
     {

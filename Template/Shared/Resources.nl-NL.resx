@@ -123,6 +123,9 @@
   <data name="AConfirmationLinkHasBeenSentToEmail" xml:space="preserve">
     <value>Een bevestigingslink is gestuurd naar &lt;strong&gt;{email}&lt;/strong&gt;.</value>
   </data>
+  <data name="AllRightsReserved" xml:space="preserve">
+    <value>Alle rechten voorbehouden.</value>
+  </data>
   <data name="ANewLinkHasBeenSent" xml:space="preserve">
     <value>Een nieuwe link is gestuurd.</value>
   </data>

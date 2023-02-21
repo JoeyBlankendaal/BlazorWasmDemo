@@ -19,14 +19,14 @@ public static class ServiceCollectionExtensions
             options.User.RequireUniqueEmail = true;
 
             #region Lockout
+            options.Lockout.AllowedForNewUsers = true;
             options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(30);
             options.Lockout.MaxFailedAccessAttempts = 10;
-            options.Lockout.AllowedForNewUsers = true;
             #endregion
 
             #region Password
-            options.Password.RequireDigit = false;
             options.Password.RequiredLength = 8;
+            options.Password.RequireDigit = false;
             options.Password.RequireNonAlphanumeric = false;
             options.Password.RequireLowercase = false;
             options.Password.RequireUppercase = false;

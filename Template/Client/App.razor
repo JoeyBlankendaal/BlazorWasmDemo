@@ -6,9 +6,13 @@
     <CascadingAuthenticationState>
         <Router AppAssembly="@typeof(App).Assembly">
             <Found Context="routeData">
-                <PageTitle>@Config["App:Name"]</PageTitle>
+                <PageTitle>@Config.GetAppName()</PageTitle>
 
                 <AuthorizeRouteView RouteData="@routeData" DefaultLayout="@typeof(Layout)">
+                    <Authorizing>
+                        <div class="spinner"></div>
+                    </Authorizing>
+
                     <NotAuthorized>
                         <LogIn />
                     </NotAuthorized>

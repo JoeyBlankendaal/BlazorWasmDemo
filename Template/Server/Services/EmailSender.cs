@@ -2,6 +2,7 @@
 using MailKit.Security;
 using MimeKit;
 using MimeKit.Text;
+using Template.Shared.Extensions;
 
 namespace Template.Server.Services;
 
@@ -28,8 +29,8 @@ public class EmailSender : IEmailSender
         message.Body = new TextPart(TextFormat.Html) { Text = body };
 
         using var smtp = new SmtpClient();
-        smtp.Connect(_config["Smtp:Host"], int.Parse(_config["Smtp:Port"]), SecureSocketOptions.StartTls);
-        smtp.Authenticate(_config["Smtp:Username"], _config["Smtp:Password"]);
+        smtp.Connect(_config.GetSmtpHost(), _config.GetSmtpPort(), SecureSocketOptions.StartTls);
+        smtp.Authenticate(_config.GetSmtpUserName(), _config.GetSmtpPassword());
         smtp.Send(message);
         smtp.Disconnect(true);
     }

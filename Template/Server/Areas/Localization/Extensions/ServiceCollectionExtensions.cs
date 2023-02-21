@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Localization;
 using System.Globalization;
+using Template.Shared.Areas.Localization.Extensions;
 using Template.Shared.Areas.Localization.Services;
 
 namespace Template.Server.Areas.Localization.Extensions;
@@ -9,9 +10,9 @@ public static class ServiceCollectionExtensions
     public static void AddLocalization(this IServiceCollection services, IConfiguration config)
     {
         // Get configuration properties
-        var cookieName = config["App:CookieNames:Culture"];
-        var cultures = config.GetSection("Areas:Localization:Cultures").Get<string[]>();
-        var defaultCulture = config["Areas:Localization:DefaultCulture"];
+        var cookieName = config.GetLocalizationCookieName();
+        var cultures = config.GetLocalizationCultures();
+        var defaultCulture = config.GetLocalizationDefaultCulture();
 
         // Add services
         services.AddLocalization();

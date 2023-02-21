@@ -1,6 +1,3 @@
 ﻿namespace Template.Shared;
 
-public class Resources
-{
-
-}
+public class Resources { }

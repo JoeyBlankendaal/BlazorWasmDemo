@@ -1,4 +1,6 @@
-﻿@if (!User.EmailConfirmed)
+﻿@using Template.Shared.Areas.Identity.Extensions
+
+@if (Config.GetIdentityConfirmEmail() && !User.EmailConfirmed)
 {
     <div class="alert">
         <p>@((MarkupString)Localizer["AConfirmationLinkHasBeenSentToEmail"].Replace("{email}", User.Email))</p>

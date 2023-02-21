@@ -3,6 +3,7 @@ using Template.Server.Areas.Finance.Services;
 using Template.Server.Areas.Identity.Services;
 using Template.Shared.Areas.Finance.Models;
 using Template.Shared.Areas.Identity.Models;
+using Template.Shared.Extensions;
 using EntityFramework = Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace Template.Server.Services;
@@ -28,9 +29,9 @@ public class DbContext :
     protected override void OnConfiguring(DbContextOptionsBuilder builder)
     {
         // Get configuration properties
-        var database = _config["App:Database"];
-        var dbms = _config[$"Databases:{database}:DBMS"];
-        var connectionString = _config[$"Databases:{database}:ConnectionString"];
+        var database = _config.GetAppDatabase();
+        var dbms = _config.GetDatabaseDbms(database);
+        var connectionString = _config.GetDatabaseConnectionString(database);
 
         // Configure the context to connect to a database with a configured type
         switch (dbms)
@@ -46,7 +47,7 @@ public class DbContext :
 
     protected override void OnModelCreating(ModelBuilder builder)
     {
-        var areas = _config.GetSection("App:Areas").Get<string[]>();
+        var areas = _config.GetAppAreas();
 
         if (areas.Contains("Finance")) FinanceDbContext.OnModelCreating(builder);
         if (areas.Contains("Identity")) IdentityDbContext.OnModelCreating(builder);

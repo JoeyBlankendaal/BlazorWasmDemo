@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
+using Template.Shared.Areas.Localization.Extensions;
 using Template.Shared.Areas.Localization.Parameters;
 
 namespace Template.Server.Areas.Localization.Controllers;
@@ -19,7 +20,7 @@ public class CultureController : ControllerBase
     public IActionResult SetCulture(CultureFormParameters parameters)
     {
         Response.Cookies.Append(
-            _config["App:CookieNames:Culture"],
+            _config.GetLocalizationCookieName(),
             CookieRequestCultureProvider.MakeCookieValue(new RequestCulture(parameters.CultureName)),
             new CookieOptions { Expires = DateTimeOffset.UtcNow.AddYears(1) });
 

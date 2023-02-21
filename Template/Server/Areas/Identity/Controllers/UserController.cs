@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.WebUtilities;
 using System.Text;
 using Template.Server.Areas.Identity.Services;
+using Template.Shared.Areas.Identity.Extensions;
 using Template.Shared.Areas.Identity.Models;
 using Template.Shared.Areas.Identity.Parameters;
 using Template.Shared.Areas.Localization.Services;
@@ -13,12 +14,15 @@ namespace Template.Server.Areas.Identity.Controllers;
 [Route("api/user")]
 public class UserController : ControllerBase
 {
+    private readonly IConfiguration _config;
     private readonly Localizer _localizer;
     private readonly IUserEmailSender _userEmailSender;
     private readonly IUserService _userService;
 
-    public UserController(Localizer localizer, IUserEmailSender userEmailSender, IUserService userService)
+    public UserController(
+        IConfiguration config, Localizer localizer, IUserEmailSender userEmailSender, IUserService userService)
     {
+        _config = config;
         _localizer = localizer;
         _userEmailSender = userEmailSender;
         _userService = userService;
@@ -63,8 +67,12 @@ public class UserController : ControllerBase
             return BadRequest(result.Messages[0]);
         }
 
-        var token = await _userService.GenerateEmailConfirmationToken(user);
-        _userEmailSender.SendEmailConfirmationUrl(user, token);
+        if (_config.GetIdentityConfirmEmail())
+        {
+            var token = await _userService.GenerateEmailConfirmationToken(user);
+            _userEmailSender.SendEmailConfirmationUrl(user, token);
+        }
+
         await _userService.LogIn(user);
         return Ok();
     }

@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
 using System.Globalization;
+using Template.Shared.Areas.Localization.Extensions;
 using Template.Shared.Areas.Localization.Parameters;
 
 namespace Template.Client.Areas.Localization.Services;
@@ -24,10 +25,7 @@ public class CultureService : ICultureService
         _cultureApi = cultureApi;
         _js = js;
         _navManager = navManager;
-
-        _supportedCultures = Array.ConvertAll(
-            config.GetSection("Areas:Localization:Cultures").Get<string[]>(),
-            c => new CultureInfo(c));
+        _supportedCultures = Array.ConvertAll(config.GetLocalizationCultures(), c => new CultureInfo(c));
     }
 
     public CultureInfo GetCurrentCulture()

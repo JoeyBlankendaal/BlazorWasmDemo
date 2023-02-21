@@ -8,7 +8,8 @@ namespace Template.Client.Areas.Localization.Extensions;
 
 public static class EditContextDataAnnotationsExtensions
 {
-    private static readonly ConcurrentDictionary<(Type ModelType, string FieldName), PropertyInfo> _propertyInfoCache = new();
+    private static readonly ConcurrentDictionary<(Type ModelType, string FieldName), PropertyInfo> _propertyInfoCache =
+        new();
 
     public static EditContext AddLocalizedDataAnnotationsValidation(this EditContext editContext, Localizer localizer)
     {
@@ -51,7 +52,11 @@ public static class EditContextDataAnnotationsExtensions
         editContext.NotifyValidationStateChanged();
     }
 
-    private static void ValidateField(EditContext editContext, ValidationMessageStore messages, in FieldIdentifier fieldIdentifier, Localizer localizer)
+    private static void ValidateField(
+        EditContext editContext,
+        ValidationMessageStore messages,
+        in FieldIdentifier fieldIdentifier,
+        Localizer localizer)
     {
         if (!TryGetValidatableProperty(fieldIdentifier, out var propertyInfo))
         {

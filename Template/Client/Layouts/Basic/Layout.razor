@@ -4,7 +4,7 @@
 <div id="wrapper">
     <div id="header">
         <div class="container">
-            <p id="logo">@Config["App:Name"]</p>
+            <p id="logo">@Config.GetAppName()</p>
             <NavMenu />
         </div>
     </div>
@@ -15,7 +15,7 @@
 </div>
 
 <div id="footer" class="container">
-    <p>&copy; @Config["App:Name"]</p>
+    <p>&copy; @DateTime.Now.Year @Config.GetAppName(). @Localizer["AllRightsReserved"]</p>
     <CultureForm />
 </div>
 
